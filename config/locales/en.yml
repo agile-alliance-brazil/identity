@@ -20,4 +20,15 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      users:
+        new: "Sign up"
+    attributes:
+      minimum_character_count: "at least %{minimum_length} characters"
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              username_format: "must start with an alphanumeric character and include only alphanumeric characters, dots, dashes, underscores, at symbols and whitespaces."

@@ -1,0 +1,40 @@
+%h2= t('activerecord.models.users.new')
+
+= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+
+  .field
+    = f.label :username
+    %br
+    = f.text_field :username, autofocus: true
+
+  .field
+    = f.label :first_name
+    %br
+    = f.text_field :first_name, autofocus: true
+
+  .field
+    = f.label :last_name
+    %br
+    = f.text_field :last_name, autofocus: true
+
+  .field
+    = f.label :email
+    %br
+    = f.email_field :email, autofocus: true
+
+  .field
+    = f.label :password
+    - if @validatable
+      %em= "(#{t('activerecord.attributes.minimum_character_count', minimum_length: @minimum_password_length)})"
+    %br
+    = f.password_field :password, autocomplete: "off"
+
+  .field
+    = f.label :password_confirmation
+    %br
+    = f.password_field :password_confirmation, autocomplete: "off"
+
+  .actions= f.submit t('activerecord.models.users.new')
+
+= render "devise/shared/links"

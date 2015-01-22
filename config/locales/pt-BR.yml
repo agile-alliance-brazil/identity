@@ -1,0 +1,27 @@
+#encoding: UTF-8
+pt-BR:
+  activerecord:
+    models:
+      user: "usuário"
+      users:
+        new: "Inscrever-se"
+    attributes:
+      minimum_character_count: "mínimo de %{minimum_length} caracteres"
+      user:
+        first_name: "Nome"
+        last_name: "Sobrenome"
+        password: "Senha"
+        password_confirmation: "Confirmação da senha"
+        username: "Nome de usuário"
+    errors:
+      models:
+        user:
+          attributes:
+            username:
+              too_short: "é muito pequeno. Deve ter pelo menos 3 caracteres."
+              username_format: "deve começar com um caractere alfanumérico e ser composto apenas de caracteres alfanuméricos, pontos (.), traços(-), underscores (_), arrobas (@) e espaços ( )."
+  errors:
+    messages:
+      email_format: "deve ter um formato de e-mail válido."
+      too_short: "é muito curto(a)."
+      blank: "não pode ficar em branco."

@@ -14,6 +14,7 @@ gem 'rails', '4.2.0'
 gem 'haml', '4.0.6'
 gem 'will_paginate', '3.0.7'
 gem 'devise', '3.4.1'
+gem 'devise-i18n'
 gem 'devise-encryptable', '0.2.0'
 gem 'doorkeeper', '2.1.0'
 gem 'newrelic_rpm'
@@ -23,7 +24,7 @@ gem 'sass-rails', '~>5.0'
 gem 'coffee-rails', '~>4.1'
 gem 'jquery-ui-rails', '~>5.0'
 gem 'uglifier', '~>2.7'
-
+gem 'turbolinks'
 
 group :development do
   gem 'capistrano', '3.3.5', require: false
