@@ -9,10 +9,11 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, length: { maximum: 100 }
   validates :organization, length: { maximum: 100 }, allow_blank: true
   validates :website_url, length: { maximum: 100 }, allow_blank: true
-  validates :username, length: { within: 3..30 }, format: { with: /\A\w[\w\.+\-_@ ]+\z/, message: :username_format }, uniqueness: { case_sensitive: false }
+  validates :username, length: { within: 3..30 }, format: { with: /\A\w[\w\.+\-_@ ]+\z/, message: :username_format }, uniqueness: { case_sensitive: false }, constant: { on: :update }
   validates :email, length: { within: 6..100 }, allow_blank: true
 
   before_validation do |user|
+    user.twitter_username = user.twitter_username.try(:strip)
     user.twitter_username = user.twitter_username[1..-1] if user.twitter_username =~ /\A@/
     user.state = '' unless in_brazil?
   end

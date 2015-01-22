@@ -25,3 +25,6 @@ pt-BR:
       email_format: "deve ter um formato de e-mail válido."
       too_short: "é muito curto(a)."
       blank: "não pode ficar em branco."
+      record_invalid: "não é válido."
+      constant: "não pode mudar."
+      confirmation: "deve ser igual à senha."

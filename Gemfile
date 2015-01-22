@@ -39,10 +39,8 @@ group :development do
 end
 
 group :test do
-  gem 'mocha'
-  gem 'shoulda-matchers'
+  gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
-  gem 'simplecov'
   gem 'email_spec'
   gem 'codeclimate-test-reporter', require: nil
 end
