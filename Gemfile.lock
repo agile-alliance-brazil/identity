@@ -364,6 +364,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers
+  simplecov
   spring
   spring-commands-rspec
   sqlite3
