@@ -1,5 +1,5 @@
 # encoding: UTF-8
-require 'rails_helper'
+require_relative '../rails_helper'
 
 describe User, type: :model do
   context "before validations" do
