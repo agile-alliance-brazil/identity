@@ -42,7 +42,7 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'factory_girl_rails'
   gem 'email_spec'
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', require: nil
 end
 
