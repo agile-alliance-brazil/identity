@@ -28,3 +28,35 @@ pt-BR:
       record_invalid: "não é válido."
       constant: "não pode mudar."
       confirmation: "deve ser igual à senha."
+  devise:
+    titles:
+      confirmation_instructions: "Re-enviar instruções de confirmação"
+      unlock_instructions: "Re-enviar instruções de desbloqueio"
+      change_password: "Mudar sua senha"
+      lost_password: "Esqueceu sua senha?"
+      cancel_account: "Cancelar minha conta"
+      login: "Acessar"
+    actions:
+      resend_instructions: "Re-enviar instruções"
+      change_password: "Mudar minha senha"
+      send_password_reset: "Enviar instruções para mudança de senha"
+      cancel_account: "Cancelar minha conta"
+      login: "Acessar"
+    fields:
+      new_password: "Nova senha"
+      confirm_new_password: "Confirme a nova senha"
+    messages:
+      cancel_account_question: "Insatisfeito(a)?"
+    links:
+      login: "Acessar"
+      sign_up: "Inscrever-se"
+      lost_password: "Esqueceu sua senha?"
+      confirmation_instructions: "Não recebeu instruções de confirmação?"
+      unlock_instructions: "Não recebeu instruções de desbloqueio?"
+      omniauth_sign_in: "Acessar com %{provider}"
+  titles:
+    edit: "Editar %{resource}"
+  actions:
+    edit: "Atualizar"
+    back: "Voltar"
+    confirm: "Tem certeza? Essa ação não pode ser revertido."

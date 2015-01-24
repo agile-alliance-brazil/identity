@@ -1,0 +1,9 @@
+Olá #{@resource.email}!
+
+
+Sua conta foi bloqueada por excesso de tentativas de acesso malsucedidas.
+
+
+Clique no link abaixo para desbloquear sua conta:
+
+= unlock_url(@resource, unlock_token: @token)
