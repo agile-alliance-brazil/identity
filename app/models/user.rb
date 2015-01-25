@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class User < ActiveRecord::Base
   AUTH_PROVIDERS = Rails.application.secrets.omniauth.keys
+  SESSION_DATA_KEY = 'devise.omniauth_data'
   devise :database_authenticatable, :registerable, :recoverable,
     :trackable, :validatable, :omniauthable, omniauth_providers: AUTH_PROVIDERS
 
@@ -39,14 +40,19 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.from_auth_info(info)
-    user = User.new
+  def self.new_with_session(params, session)
+    user = super
+    data = session[User::SESSION_DATA_KEY] || {}
+    User.from_auth_info(data.with_indifferent_access[:info], user)
+  end
+
+  def self.from_auth_info(info, user = User.new)
     if info
-      user.email = info[:email]
-      user.username = user.email
+      user.email ||= info[:email]
+      user.username ||= user.email
       names = info[:name].try(:split, /\s/)
-      user.first_name = names.try(:first)
-      user.last_name = names.try(:last)
+      user.first_name ||= names.try(:first)
+      user.last_name ||= names.try(:last)
     end
     user
   end

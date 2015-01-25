@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   devise_for  :users,
               controllers: {
-                omniauth_callbacks: 'users/omniauth_callbacks',
-                registrations: 'users/registrations'
+                omniauth_callbacks: 'users/omniauth_callbacks'
               },
               path_names: {
                 sign_in: 'login',
