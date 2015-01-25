@@ -8,11 +8,14 @@ pt-BR:
     attributes:
       minimum_character_count: "mínimo de %{minimum_length} caracteres"
       user:
+        login: "Usuário ou email"
         first_name: "Nome"
         last_name: "Sobrenome"
         password: "Senha"
         password_confirmation: "Confirmação da senha"
+        remember_me: "Lembre-se de mim"
         username: "Nome de usuário"
+        confirmation_token: "Token de confirmação"
     errors:
       models:
         user:
@@ -26,6 +29,7 @@ pt-BR:
       too_short: "é muito curto(a)."
       blank: "não pode ficar em branco."
       record_invalid: "não é válido."
+      invalid: "não é válido."
       constant: "não pode mudar."
       confirmation: "deve ser igual à senha."
   devise:
@@ -47,6 +51,9 @@ pt-BR:
       confirm_new_password: "Confirme a nova senha"
     messages:
       cancel_account_question: "Insatisfeito(a)?"
+    failure:
+      invalid: "Usuário ou email inválido"
+      not_found_in_database: "Usuário ou email inválido"
     links:
       login: "Acessar"
       sign_up: "Inscrever-se"

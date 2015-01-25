@@ -102,8 +102,6 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-encryptable (0.2.0)
-      devise (>= 2.1.0)
     devise-i18n (0.11.3)
     diff-lcs (1.2.5)
     docile (1.1.5)
@@ -362,7 +360,6 @@ DEPENDENCIES
   codeclimate-test-reporter
   coffee-rails (~> 4.1)
   devise (= 3.4.1)
-  devise-encryptable (= 0.2.0)
   devise-i18n
   doorkeeper (= 2.1.0)
   email_spec

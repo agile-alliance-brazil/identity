@@ -4,4 +4,4 @@ Welcome #{@email}!
 
 You can confirm your account email through the link below:
 
-= confirmation_url(@resource, confirmation_token: @token)
+= user_confirmation_url(confirmation_token: @token)

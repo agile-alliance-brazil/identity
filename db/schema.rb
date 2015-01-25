@@ -20,12 +20,9 @@ ActiveRecord::Schema.define(version: 20150124193218) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "encrypted_password"
-    t.string   "password_salt"
-    t.string   "first_name"
-    t.string   "last_name"
+    t.string   "username",                              null: false
+    t.string   "first_name",                            null: false
+    t.string   "last_name",                             null: false
     t.string   "phone"
     t.string   "state"
     t.string   "city"
@@ -33,18 +30,31 @@ ActiveRecord::Schema.define(version: 20150124193218) do
     t.string   "website_url"
     t.text     "bio"
     t.string   "country"
+    t.string   "twitter_username"
+    t.string   "default_locale",         default: "pt", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email",                                 null: false
+    t.string   "encrypted_password",                    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "default_locale",         default: "pt"
-    t.string   "reset_password_token"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.string   "authentication_token"
-    t.integer  "sign_in_count"
-    t.datetime "reset_password_sent_at"
-    t.string   "twitter_username"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
+
+  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token"
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token"
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token"
+  add_index "users", ["username"], name: "index_users_on_username"
 
 end

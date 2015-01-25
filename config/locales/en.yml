@@ -23,44 +23,49 @@ en:
   activerecord:
     models:
       users:
-        new: "Sign up"
+        new: 'Sign up'
     attributes:
-      minimum_character_count: "at least %{minimum_length} characters"
+      minimum_character_count: 'at least %{minimum_length} characters'
+      user:
+        login: "Username or email"
     errors:
       models:
         user:
           attributes:
             username:
-              username_format: "must start with an alphanumeric character and include only alphanumeric characters, dots, dashes, underscores, at symbols and whitespaces."
+              username_format: 'must start with an alphanumeric character and include only alphanumeric characters, dots, dashes, underscores, at symbols and whitespaces.'
   devise:
     titles:
-      confirmation_instructions: "Resend confirmation instructions"
-      unlock_instructions: "Resend unlock instructions"
-      change_password: "Change your password"
-      lost_password: "Forgot your password?"
-      cancel_account: "Cancel my account"
-      login: "Log In"
+      confirmation_instructions: 'Resend confirmation instructions'
+      unlock_instructions: 'Resend unlock instructions'
+      change_password: 'Change your password'
+      lost_password: 'Forgot your password?'
+      cancel_account: 'Cancel my account'
+      login: 'Log In'
     actions:
-      resend_instructions: "Resend instructions"
-      change_password: "Change my password"
-      send_password_reset: "Send me reset password instructions"
-      cancel_account: "Cancel my account"
-      login: "Log in"
+      resend_instructions: 'Resend instructions'
+      change_password: 'Change my password'
+      send_password_reset: 'Send me reset password instructions'
+      cancel_account: 'Cancel my account'
+      login: 'Log in'
     fields:
-      new_password: "New password"
-      confirm_new_password: "Confirm new password"
+      new_password: 'New password'
+      confirm_new_password: 'Confirm new password'
     messages:
-      cancel_account_question: "Unhappy?"
+      cancel_account_question: 'Unhappy?'
+    failure:
+      invalid: "Invalid username or email"
+      not_found_in_database: "Invalid username or email"
     links:
-      login: "Log in"
-      sign_up: "Sign up"
-      lost_password: "Forgot your password?"
-      confirmation_instructions: "Didn't receive confirmation instructions?"
-      unlock_instructions: "Didn't receive unlock instructions?"
-      omniauth_sign_in: "Sign in with %{provider}"
+      login: 'Log in'
+      sign_up: 'Sign up'
+      lost_password: 'Forgot your password?'
+      confirmation_instructions: 'Did not receive confirmation instructions?'
+      unlock_instructions: 'Did not receive unlock instructions?'
+      omniauth_sign_in: 'Sign in with %{provider}'
   titles:
-    edit: "Edit %{resource}"
+    edit: 'Edit %{resource}'
   actions:
-    edit: "Update"
-    back: "Back"
-    confirm: "Are you sure? This action cannot be undone."
+    edit: 'Update'
+    back: 'Back'
+    confirm: 'Are you sure? This action cannot be undone.'

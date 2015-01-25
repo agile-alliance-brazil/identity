@@ -150,6 +150,8 @@ describe User, type: :model do
   end
 
   context 'validations' do
+    it { is_expected.to validate_presence_of :username }
+    it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_presence_of :first_name }
     it { is_expected.to validate_presence_of :last_name }
 
@@ -194,13 +196,6 @@ describe User, type: :model do
     end
 
     it { is_expected.to validate_confirmation_of :password }
-
-    it 'should validate that username does not change' do
-      user = FactoryGirl.create(:user)
-      user.username = 'new_username'
-      expect(user).to_not be_valid
-      expect(user.errors[:username]).to include(I18n.t('errors.messages.constant'))
-    end
   end
 
   context 'associations' do

@@ -3,9 +3,12 @@ class User < ActiveRecord::Base
   AUTH_PROVIDERS = Rails.application.secrets.omniauth.keys
   SESSION_DATA_KEY = 'devise.omniauth_data'
   devise :database_authenticatable, :registerable, :recoverable,
-    :trackable, :validatable, :omniauthable, omniauth_providers: AUTH_PROVIDERS
+    :trackable, :rememberable, :validatable, :omniauthable, :confirmable,
+    omniauth_providers: AUTH_PROVIDERS, authentication_keys: [:login]
 
   has_many :authentications, dependent: :destroy
+
+  attr_accessor :login
 
   normalize_attributes :first_name, :last_name, :email, :username, :twitter_username,
     :phone, :city, :state, :country, :bio, :website_url, :organization
@@ -14,8 +17,11 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true, length: { maximum: 100 }
   validates :organization, length: { maximum: 100 }, allow_blank: true
   validates :website_url, length: { maximum: 100 }, allow_blank: true
-  validates :username, length: { within: 3..30 }, format: { with: /\A\w[\w\.+-_@ ]+\z/, message: :username_format }, uniqueness: { case_sensitive: false }, constant: { on: :update }
-  validates :email, length: { within: 6..100 }
+  validates :username, length: { within: 3..30 }, presence: true,
+    uniqueness: { case_sensitive: false },
+    format: { with: /\A\w[\w\.+-_@ ]+\z/, message: :username_format }
+  validates :email, length: { within: 6..100 },
+    uniqueness: { case_sensitive: false }, presence: true
 
   before_validation do |user|
     user.twitter_username = user.twitter_username[1..-1] if user.twitter_username =~ /\A@/
@@ -55,6 +61,16 @@ class User < ActiveRecord::Base
       user.last_name ||= names.try(:last)
     end
     user
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["username = :value OR email = :value",
+        { value: login.downcase }]).first
+    else
+      where(conditions).first
+    end
   end
 
   def full_name
