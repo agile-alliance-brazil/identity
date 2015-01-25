@@ -18,6 +18,20 @@ gem 'devise-i18n'
 gem 'devise-encryptable', '0.2.0'
 gem 'doorkeeper', '2.1.0'
 gem 'newrelic_rpm'
+gem 'attribute_normalizer'
+
+gem 'omniauth'
+# general
+gem 'omniauth-facebook'
+# gem 'omniauth-google-oauth2'
+# gem 'omniauth-linkedin-oauth2'
+# gem 'omniauth-twitter'
+# dev
+# gem 'omniauth-azure-oauth2'
+# gem 'omniauth-github'
+# gem 'omniauth2-gitlab'
+# gem 'omniauth-heroku'
+# gem 'omniauth-digitalocean'
 
 gem 'jquery-rails', '~>4.0'
 gem 'sass-rails', '~>5.0'

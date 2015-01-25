@@ -2,9 +2,10 @@
 ENV["RAILS_ENV"] ||= 'test'
 require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
-require 'spec_helper'
+SimpleCov.start 'rails' if ENV['COVERAGE']
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'spec_helper'
 # Add additional requires below this line. Rails is not loaded until this point!
 require 'shoulda/matchers'
 require 'rspec/collection_matchers'
@@ -29,6 +30,7 @@ require 'rspec/collection_matchers'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include AttributeNormalizer::RSpecMatcher, type: :model
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

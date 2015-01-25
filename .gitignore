@@ -1,11 +1,13 @@
 *.rbc
 capybara-*.html
+.DS_Store
 /log
 /tmp
 /db/*.sqlite3
 /public/system
 /coverage/
 /spec/tmp
+**/.DS_Store
 **.orig
 rerun.txt
 pickle-email-*.html
