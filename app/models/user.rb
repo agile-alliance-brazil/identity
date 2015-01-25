@@ -20,8 +20,7 @@ class User < ActiveRecord::Base
   validates :username, length: { within: 3..30 }, presence: true,
     uniqueness: { case_sensitive: false },
     format: { with: /\A\w[\w\.+-_@ ]+\z/, message: :username_format }
-  validates :email, length: { within: 6..100 },
-    uniqueness: { case_sensitive: false }, presence: true
+  validates :email, length: { within: 6..100 }
 
   before_validation do |user|
     user.twitter_username = user.twitter_username[1..-1] if user.twitter_username =~ /\A@/
@@ -59,6 +58,7 @@ class User < ActiveRecord::Base
       names = info[:name].try(:split, /\s/)
       user.first_name ||= names.try(:first)
       user.last_name ||= names.try(:last)
+      user.twitter_username ||= info[:nickname]
     end
     user
   end

@@ -32,6 +32,7 @@ pt-BR:
       invalid: "não é válido."
       constant: "não pode mudar."
       confirmation: "deve ser igual à senha."
+      taken: "já está em uso."
   devise:
     titles:
       confirmation_instructions: "Re-enviar instruções de confirmação"

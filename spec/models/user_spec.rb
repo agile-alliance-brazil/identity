@@ -76,6 +76,15 @@ describe User, type: :model do
         expect(auth_user.email).to eq(user.email)
         expect(auth_user.username).to eq(user.email)
       end
+      it 'should map nickname to twitter_username' do
+        auth_user = User.from_auth_info(
+          auth_params[:info].merge({nickname: 'hugocorbucci'}))
+
+        expect(auth_user.twitter_username).to eq('hugocorbucci')
+        expect(auth_user.last_name).to eq(user.last_name)
+        expect(auth_user.email).to eq(user.email)
+        expect(auth_user.username).to eq(user.email)
+      end
     end
     context 'with session' do
       it 'should recover data from session' do
@@ -190,7 +199,7 @@ describe User, type: :model do
     context 'uniqueness' do
       subject { FactoryGirl.create(:user, country: 'BR') }
 
-      it { is_expected.to validate_uniqueness_of(:email).with_message(I18n.t('activerecord.errors.models.user.attributes.email.taken')) }
+      it { is_expected.to validate_uniqueness_of(:email).with_message(I18n.t('errors.messages.taken')) }
       it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
       it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
     end
