@@ -18,6 +18,7 @@ gem 'devise-i18n'
 gem 'doorkeeper', '2.1.0'
 gem 'newrelic_rpm'
 gem 'attribute_normalizer'
+gem 'aws-ses', require: 'aws/ses'
 
 gem 'omniauth'
 # general
