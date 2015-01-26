@@ -28,12 +28,13 @@ en:
       minimum_character_count: 'at least %{minimum_length} characters'
       user:
         login: "Username or email"
+        password: "Password"
     errors:
       models:
         user:
           attributes:
             username:
-              username_format: 'must start with an alphanumeric character and include only alphanumeric characters, dots, dashes, underscores, at symbols and whitespaces.'
+              username_format: 'must start with an alphanumeric character and include only alphanumeric characters, dots(.), dashes(-), underscores(_), at symbols (@) and whitespaces.'
   devise:
     titles:
       confirmation_instructions: 'Resend confirmation instructions'

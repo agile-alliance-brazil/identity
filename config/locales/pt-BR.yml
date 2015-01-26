@@ -22,7 +22,7 @@ pt-BR:
           attributes:
             username:
               too_short: "é muito pequeno. Deve ter pelo menos 3 caracteres."
-              username_format: "deve começar com um caractere alfanumérico e ser composto apenas de caracteres alfanuméricos, pontos (.), traços(-), underscores (_), arrobas (@) e espaços ( )."
+              username_format: "deve começar com um caractere alfanumérico e ser composto apenas de caracteres alfanuméricos, pontos (.), traços(-), underscores (_), arrobas (@) e espaços."
   errors:
     messages:
       email_format: "deve ter um formato de e-mail válido."

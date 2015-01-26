@@ -1,0 +1,29 @@
+= devise_error_messages!
+.field
+  = f.label :username
+  = f.text_field :username, autofocus: true
+
+.field
+  = f.label :first_name
+  = f.text_field :first_name
+
+.field
+  = f.label :last_name
+  = f.text_field :last_name
+
+.field
+  = f.label :email
+  = f.email_field :email
+
+.field
+  = f.label :password do
+    = t('activerecord.attributes.user.password')
+    - if @validatable
+      %em= "(#{t('activerecord.attributes.minimum_character_count', minimum_length: @minimum_password_length)})"
+  = f.password_field :password, autocomplete: "off"
+
+.field
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation, autocomplete: "off"
+
+.actions= f.submit submit_text

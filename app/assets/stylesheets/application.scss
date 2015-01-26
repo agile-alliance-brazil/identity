@@ -24,24 +24,28 @@ body {
   text-align: center;
 }
 
-.notice {
+.alert {
+  color: black;
+}
+
+.alert-success {
   background-color: green;
   border: 1px solid darkgreen;
 }
 
-.alert {
+.alert-danger {
   background-color: red;
   border: 1px solid pink;
 }
 
-.login {
+.content {
   position: relative;
   padding: 0 1em;
   margin: auto;
-  @media screen and (min-width: 500px) {
+  max-width: 600px;
+  @media screen and (min-width: 602px) {
     margin: 2em auto;
-    width: 318px;
-    height: 478px;
+    padding: 1em;
     border: 1px solid $border;
   }
   input[type='text'],input[type='email'],input[type='password'] {
@@ -54,6 +58,12 @@ body {
       margin: auto;
       width: 50%;
     }
+  }
+}
+
+.login {
+  @media screen and (min-width: 500px) {
+    
   }
 }
 
