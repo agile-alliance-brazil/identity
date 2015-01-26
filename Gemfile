@@ -40,6 +40,11 @@ gem 'jquery-ui-rails', '~>5.0'
 gem 'uglifier', '~>2.7'
 gem 'turbolinks'
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 group :development do
   gem 'capistrano', '3.3.5', require: false
   gem 'capistrano-rails', require: false
