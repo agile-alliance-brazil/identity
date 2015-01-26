@@ -51,6 +51,12 @@ body {
   input[type='text'],input[type='email'],input[type='password'] {
     width: 100%;
   }
+  label.required {
+    &:after {
+      content: '*';
+      color: red;
+    }
+  }
   .actions {
     margin: 1em 0;
     input[type='submit'] {
@@ -59,11 +65,9 @@ body {
       width: 50%;
     }
   }
-}
-
-.login {
-  @media screen and (min-width: 500px) {
-    
+  .field_with_errors input {
+    background-color: pink;
+    border: 1px solid red;
   }
 }
 

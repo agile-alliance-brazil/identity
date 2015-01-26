@@ -1,29 +1,29 @@
 = devise_error_messages!
 .field
-  = f.label :username
-  = f.text_field :username, autofocus: true
+  = f.label :username, class: 'required'
+  = f.text_field :username, required: true, autofocus: true
 
 .field
-  = f.label :first_name
-  = f.text_field :first_name
+  = f.label :first_name, class: 'required'
+  = f.text_field :first_name, required: true
 
 .field
-  = f.label :last_name
-  = f.text_field :last_name
+  = f.label :last_name, class: 'required'
+  = f.text_field :last_name, required: true
 
 .field
-  = f.label :email
-  = f.email_field :email
+  = f.label :email, class: 'required'
+  = f.email_field :email, required: true
 
 .field
-  = f.label :password do
+  = f.label :password, class: 'required' do
     = t('activerecord.attributes.user.password')
     - if @validatable
       %em= "(#{t('activerecord.attributes.minimum_character_count', minimum_length: @minimum_password_length)})"
-  = f.password_field :password, autocomplete: "off"
+  = f.password_field :password, required: true, autocomplete: "off"
 
 .field
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation, autocomplete: "off"
+  = f.label :password_confirmation, class: 'required'
+  = f.password_field :password_confirmation, required: true, autocomplete: "off"
 
 .actions= f.submit submit_text
