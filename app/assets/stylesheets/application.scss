@@ -1,0 +1,97 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ */
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+$border: #dfdfdf;
+
+body {
+  margin: auto;
+  position: relative;
+}
+
+.centered {
+  text-align: center;
+}
+
+.notice {
+  background-color: green;
+  border: 1px solid darkgreen;
+}
+
+.alert {
+  background-color: red;
+  border: 1px solid pink;
+}
+
+.login {
+  position: relative;
+  padding: 0 1em;
+  margin: auto;
+  @media screen and (min-width: 500px) {
+    margin: 2em auto;
+    width: 318px;
+    height: 478px;
+    border: 1px solid $border;
+  }
+  input[type='text'],input[type='email'],input[type='password'] {
+    width: 100%;
+  }
+  .actions {
+    margin: 1em 0;
+    input[type='submit'] {
+      display: block;
+      margin: auto;
+      width: 50%;
+    }
+  }
+}
+
+.line-behind {
+  position: relative;
+  z-index: 1;
+
+  &:before {
+    border-top: 2px solid $border;
+    content:"";
+    margin: 0 auto; /* this centers the line to the full width specified */
+    position: absolute; /* positioning must be absolute here, and relative positioning must be applied to the parent */
+    top: 50%; left: 0; right: 0; bottom: 0;
+    width: 95%;
+    z-index: -1;
+  }
+
+  span {
+    background: #fff;
+    padding: 0 15px;
+  }
+}
+
+a.omniauth-provider {
+  display: block;
+  margin: 1em 0;
+  border: 1px solid $border;
+  padding: 1em;
+  background-position: 95% center;
+  background-repeat: no-repeat;
+  &.twitter {
+    background-color: lightblue;
+    color: black;
+    background-image: image-url('twitter_32.png');
+  }
+  &.facebook {
+    background-color: darkblue;
+    color: white;
+    background-image: image-url('facebook_32.png');
+  }
+}

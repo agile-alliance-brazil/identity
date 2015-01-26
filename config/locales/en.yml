@@ -69,3 +69,5 @@ en:
     edit: 'Update'
     back: 'Back'
     confirm: 'Are you sure? This action cannot be undone.'
+  generic:
+    or: 'Or'

@@ -68,3 +68,5 @@ pt-BR:
     edit: "Atualizar"
     back: "Voltar"
     confirm: "Tem certeza? Essa ação não pode ser revertido."
+  generic:
+    or: 'Ou'
