@@ -34,6 +34,7 @@ gem 'omniauth-twitter'
 
 gem 'jquery-rails', '~>4.0'
 gem 'sass-rails', '~>5.0'
+gem 'bootstrap-sass', '~> 3.3'
 gem 'coffee-rails', '~>4.1'
 gem 'jquery-ui-rails', '~>5.0'
 gem 'uglifier', '~>2.7'
@@ -65,6 +66,7 @@ group :development, :test do
   gem 'rspec-its'
   gem 'rspec-collection_matchers'
   gem 'guard-rspec'
+  gem 'guard-livereload', require: false
   gem 'pry-rails'
   gem 'rb-fsevent', require: darwin_only('rb-fsevent')
   gem 'terminal-notifier-guard', require: darwin_only('terminal-notifier-guard')
