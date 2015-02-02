@@ -169,13 +169,13 @@ describe User, type: :model do
       it { is_expected.not_to validate_presence_of :state }
     end
 
-    it { is_expected.to ensure_length_of(:username).is_at_least(3).is_at_most(30) }
-    it { is_expected.to ensure_length_of(:password).is_at_least(8).is_at_most(128) }
-    it { is_expected.to ensure_length_of(:email).is_at_least(6).is_at_most(100) }
-    it { is_expected.to ensure_length_of(:first_name).is_at_most(100) }
-    it { is_expected.to ensure_length_of(:last_name).is_at_most(100) }
-    it { is_expected.to ensure_length_of(:organization).is_at_most(100) }
-    it { is_expected.to ensure_length_of(:website_url).is_at_most(100) }
+    it { is_expected.to validate_length_of(:username).is_at_least(3).is_at_most(30) }
+    it { is_expected.to validate_length_of(:password).is_at_least(8).is_at_most(128) }
+    it { is_expected.to validate_length_of(:email).is_at_least(6).is_at_most(100) }
+    it { is_expected.to validate_length_of(:first_name).is_at_most(100) }
+    it { is_expected.to validate_length_of(:last_name).is_at_most(100) }
+    it { is_expected.to validate_length_of(:organization).is_at_most(100) }
+    it { is_expected.to validate_length_of(:website_url).is_at_most(100) }
 
     it { is_expected.to allow_value('dtsato').for(:username) }
     it { is_expected.to allow_value('123').for(:username) }
