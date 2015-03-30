@@ -83,4 +83,6 @@ group :development, :test do
   gem 'guard-konacha-rails'
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'selenium-webdriver'
+  gem 'rubocop'
+  gem 'guard-rubocop'
 end

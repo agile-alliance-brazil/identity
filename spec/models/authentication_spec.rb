@@ -1,7 +1,7 @@
-#encoding: UTF-8
+# encoding: UTF-8
 require_relative '../rails_helper'
 
-describe Authentication do
+RSpec.describe Authentication do
   context 'validations' do
     it { should belong_to(:user) }
 

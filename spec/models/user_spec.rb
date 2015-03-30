@@ -1,10 +1,10 @@
 # encoding: UTF-8
 require_relative '../rails_helper'
 
-describe User, type: :model do
+RSpec.describe User, type: :model do
   context 'builders' do
-    let(:user) {FactoryGirl.build(:user)}
-    let(:auth_params) {
+    let(:user) { FactoryGirl.build(:user) }
+    let(:auth_params) do
       {
         provider: 'provider_id',
         uid: 'uid',
@@ -13,11 +13,11 @@ describe User, type: :model do
           email: user.email
         }
       }
-    }
+    end
     context 'from omniauth' do
       it 'should find user by authentication from auth object' do
         user.save
-        user.authentications.create(auth_params.reject{|k,v| k == :info})
+        user.authentications.create(auth_params.reject { |k, _v| k == :info })
 
         omni_user = User.from_omniauth(auth_params)
         expect(omni_user).to eq(user)
@@ -29,7 +29,9 @@ describe User, type: :model do
 
         expect(omni_user).to eq(user)
         expect(user.authentications).to have(1).item
-        expect(user.authentications.first.provider).to eq(auth_params[:provider])
+        expect(user.authentications.first.provider).to eq(
+          auth_params[:provider]
+        )
         expect(user.authentications.first.uid).to eq(auth_params[:uid])
       end
       it 'should build from auth object' do
@@ -41,7 +43,9 @@ describe User, type: :model do
         expect(omni_user.email).to eq(user.email)
         expect(omni_user.username).to eq(user.email)
         expect(omni_user.authentications).to have(1).item
-        expect(omni_user.authentications.first.provider).to eq(auth_params[:provider])
+        expect(omni_user.authentications.first.provider).to eq(
+          auth_params[:provider]
+        )
         expect(omni_user.authentications.first.uid).to eq(auth_params[:uid])
       end
     end
@@ -78,7 +82,7 @@ describe User, type: :model do
       end
       it 'should map nickname to twitter_username' do
         auth_user = User.from_auth_info(
-          auth_params[:info].merge({nickname: 'hugocorbucci'}))
+          auth_params[:info].merge(nickname: 'hugocorbucci'))
 
         expect(auth_user.twitter_username).to eq('hugocorbucci')
         expect(auth_user.last_name).to eq(user.last_name)
@@ -88,8 +92,10 @@ describe User, type: :model do
     end
     context 'with session' do
       it 'should recover data from session' do
-        auth_user = User.new_with_session({},
-          {User::SESSION_DATA_KEY => auth_params})
+        auth_user = User.new_with_session(
+          {},
+          User::SESSION_DATA_KEY => auth_params
+        )
 
         expect(auth_user.first_name).to eq(user.first_name)
         expect(auth_user.last_name).to eq(user.last_name)
@@ -105,12 +111,15 @@ describe User, type: :model do
         expect(auth_user.username).to be_nil
       end
       it 'should use params if provided' do
-        auth_user = User.new_with_session({first_name: 'Hugo'}, {})
+        auth_user = User.new_with_session({ first_name: 'Hugo' }, {})
 
         expect(auth_user.first_name).to eq('Hugo')
       end
       it 'should provide preference to params if conflicting data in session' do
-        auth_user = User.new_with_session({first_name: 'Hugo'}, {info: {first_name: 'Danilo'}})
+        auth_user = User.new_with_session(
+          { first_name: 'Hugo' },
+          info: { first_name: 'Danilo' }
+        )
 
         expect(auth_user.first_name).to eq('Hugo')
       end
@@ -169,9 +178,18 @@ describe User, type: :model do
       it { is_expected.not_to validate_presence_of :state }
     end
 
-    it { is_expected.to validate_length_of(:username).is_at_least(3).is_at_most(30) }
-    it { is_expected.to validate_length_of(:password).is_at_least(8).is_at_most(128) }
-    it { is_expected.to validate_length_of(:email).is_at_least(6).is_at_most(100) }
+    it do
+      is_expected.to validate_length_of(:username)
+        .is_at_least(3).is_at_most(30)
+    end
+    it do
+      is_expected.to validate_length_of(:password)
+        .is_at_least(8).is_at_most(128)
+    end
+    it do
+      is_expected.to validate_length_of(:email)
+        .is_at_least(6).is_at_most(100)
+    end
     it { is_expected.to validate_length_of(:first_name).is_at_most(100) }
     it { is_expected.to validate_length_of(:last_name).is_at_most(100) }
     it { is_expected.to validate_length_of(:organization).is_at_most(100) }
@@ -199,7 +217,10 @@ describe User, type: :model do
     context 'uniqueness' do
       subject { FactoryGirl.create(:user, country: 'BR') }
 
-      it { is_expected.to validate_uniqueness_of(:email).with_message(I18n.t('errors.messages.taken')) }
+      it do
+        is_expected.to validate_uniqueness_of(:email)
+          .with_message(I18n.t('errors.messages.taken'))
+      end
       it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
       it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
     end
@@ -208,7 +229,7 @@ describe User, type: :model do
   end
 
   context 'associations' do
-    it { is_expected.to have_many(:authentications).dependent(:destroy)}
+    it { is_expected.to have_many(:authentications).dependent(:destroy) }
   end
 
   it 'should provide full name' do
