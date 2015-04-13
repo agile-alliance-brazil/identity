@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     keys = { provider: auth[:provider], uid: auth[:uid] }
-    authentication = Authentication.where(keys).first
+    authentication = Authentication.find_by(keys)
     if authentication
       authentication.user
     else
@@ -79,12 +79,12 @@ class User < ActiveRecord::Base
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if (login = conditions.delete(:login))
-      where(conditions).where([
+      where(conditions).find_by([
         'username = :value OR email = :value',
         value: login.downcase
-      ]).first
+      ])
     else
-      where(conditions).first
+      find_by(conditions)
     end
   end
 
