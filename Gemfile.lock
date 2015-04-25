@@ -106,7 +106,7 @@ GEM
     devise-i18n (0.12.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
-    doorkeeper (2.1.4)
+    doorkeeper (2.2.0)
       railties (>= 3.2)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
@@ -403,7 +403,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1)
   devise (= 3.4.1)
   devise-i18n
-  doorkeeper (= 2.1.4)
+  doorkeeper (= 2.2.0)
   email_spec
   factory_girl_rails
   foreman
