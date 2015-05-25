@@ -79,7 +79,7 @@ group :development, :test do
   gem 'rb-inotify', require: linux_only('rb-inotify')
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'konacha', '3.4.0' # Rubygems isn't picking 3.4.0 as latest
+  gem 'konacha'
   gem 'guard-konacha-rails'
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'selenium-webdriver'
