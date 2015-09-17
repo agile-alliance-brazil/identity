@@ -49,7 +49,6 @@ end
 group :development do
   gem 'capistrano', '3.4.0', require: false
   gem 'capistrano-rails', require: false
-  gem 'net-ssh', '2.10.1.rc1' # 2.10 is yanked
   gem 'capistrano-bundler', require: false
   gem 'foreman'
   gem 'bullet'
