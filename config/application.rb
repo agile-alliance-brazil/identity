@@ -34,8 +34,7 @@ module Identity
     config.to_prepare do
       Doorkeeper::ApplicationController.layout 'application'
       Doorkeeper::ApplicationController.before_filter do |_controller|
-        I18n.locale = params[:locale] ||
-          current_user.try(:default_locale)
+        I18n.locale = params[:locale] || current_user.try(:default_locale)
       end
     end
   end
