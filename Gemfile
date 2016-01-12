@@ -87,4 +87,5 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rubocop'
   gem 'guard-rubocop'
+  gem 'brakeman', require: false
 end
