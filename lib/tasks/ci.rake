@@ -16,7 +16,6 @@ begin
     sh 'bundle exec brakeman -z'
   end
 
-
   task default: :'ci:all'
 rescue LoadError
   STDERR.puts "Couldn't load rubocop, rspec, brakeman or konacha."
