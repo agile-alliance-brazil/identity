@@ -2,7 +2,7 @@
 # Represents a user in the system
 class User < ActiveRecord::Base
   AUTH_PROVIDERS = Rails.application.secrets.omniauth.keys
-  SESSION_DATA_KEY = 'devise.omniauth_data'
+  SESSION_DATA_KEY = 'devise.omniauth_data'.freeze
   devise :database_authenticatable, :registerable, :recoverable,
          :trackable, :rememberable, :validatable, :omniauthable,
          :confirmable,
@@ -80,9 +80,9 @@ class User < ActiveRecord::Base
     conditions = warden_conditions.dup
     if (login = conditions.delete(:login))
       where(conditions).find_by([
-        'username = :value OR email = :value',
-        value: login.downcase
-      ])
+                                  'username = :value OR email = :value',
+                                  value: login.downcase
+                                ])
     else
       find_by(conditions)
     end

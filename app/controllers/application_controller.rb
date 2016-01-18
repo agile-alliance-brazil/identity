@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  UPDATEABLE = %i(username email password password_confirmation remember_me)
+  UPDATEABLE = %i(username email password password_confirmation
+                  remember_me).freeze
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
