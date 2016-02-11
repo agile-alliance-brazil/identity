@@ -1,15 +1,3 @@
-GIT
-  remote: https://github.com/alexkravets/konacha.git
-  revision: 344a5ef9ccf60df0090d30bf41cb924299af1825
-  specs:
-    konacha (3.8.0)
-      actionpack (>= 3.1, < 5)
-      capybara
-      colorize
-      railties (>= 3.1, < 5)
-      sprockets (>= 2, < 4)
-      tilt
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -52,7 +40,7 @@ GEM
     arel (6.0.3)
     ast (2.2.0)
     attribute_normalizer (1.2.0)
-    autoprefixer-rails (6.3.1)
+    autoprefixer-rails (6.3.2)
       execjs
       json
     aws-ses (0.6.0)
@@ -192,11 +180,19 @@ GEM
       railties (>= 3.2.16)
     json (1.8.3)
     jwt (1.5.1)
+    konacha (4.0.0)
+      actionpack (>= 4.1, < 5)
+      capybara
+      colorize
+      railties (>= 4.1, < 5)
+      sprockets (>= 2, < 4)
+      sprockets-rails (>= 2, < 4)
+      tilt
     launchy (2.4.3)
       addressable (~> 2.3)
-    listen (3.0.5)
+    listen (3.0.6)
       rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
+      rb-inotify (>= 0.9.7)
     lol_dba (2.0.3)
       actionpack (>= 3.0, < 5.0)
       activerecord (>= 3.0, < 5.0)
@@ -217,7 +213,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
-    newrelic_rpm (3.14.2.312)
+    newrelic_rpm (3.14.3.313)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     notiffany (0.0.8)
@@ -325,7 +321,7 @@ GEM
       rspec-mocks (~> 3.4.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
-    rubocop (0.37.1)
+    rubocop (0.37.2)
       parser (>= 2.3.0.4, < 3.0)
       powerpack (~> 0.1)
       rainbow (>= 1.99.1, < 3.0)
@@ -436,7 +432,7 @@ DEPENDENCIES
   haml (~> 4.0)
   jquery-rails (~> 4.0)
   jquery-ui-rails (~> 5.0)
-  konacha!
+  konacha
   lol_dba
   newrelic_rpm
   omniauth
