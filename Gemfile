@@ -39,7 +39,7 @@ gem 'sass-rails', '~>5.0'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'coffee-rails', '~>4.1'
 gem 'jquery-ui-rails', '~>5.0'
-gem 'uglifier', '~>2.7'
+gem 'uglifier', '~>3.0'
 gem 'turbolinks'
 
 group :production do

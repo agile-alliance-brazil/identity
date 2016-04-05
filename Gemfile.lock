@@ -381,9 +381,8 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.7.2)
-      execjs (>= 0.3.0)
-      json (>= 1.8.0)
+    uglifier (3.0.0)
+      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.0.3)
     uniform_notifier (1.9.0)
     warden (1.2.6)
@@ -456,7 +455,7 @@ DEPENDENCIES
   sqlite3
   terminal-notifier-guard
   turbolinks
-  uglifier (~> 2.7)
+  uglifier (~> 3.0)
   web-console
   will_paginate (~> 3.1)
 
