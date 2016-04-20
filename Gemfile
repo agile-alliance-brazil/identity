@@ -14,7 +14,7 @@ end
 gem 'rails', '~> 4.2'
 gem 'haml', '~> 4.0'
 gem 'will_paginate', '~> 3.1'
-gem 'devise', '~> 3.5'
+gem 'devise', '~> 4.0'
 gem 'devise-i18n'
 gem 'doorkeeper', '~> 3.0'
 gem 'newrelic_rpm'
