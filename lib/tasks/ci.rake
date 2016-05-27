@@ -8,9 +8,8 @@ begin
     task all: %i(rubocop spec konacha:run brakeman)
   end
 
-  task :rubocop do
-    sh 'bundle exec rubocop'
-  end
+  require 'rubocop/rake_task'
+  RuboCop::RakeTask.new(:rubocop)
 
   task :brakeman do
     sh 'bundle exec brakeman -z'

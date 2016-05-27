@@ -82,7 +82,8 @@ RSpec.describe User, type: :model do
       end
       it 'should map nickname to twitter_username' do
         auth_user = User.from_auth_info(
-          auth_params[:info].merge(nickname: 'hugocorbucci'))
+          auth_params[:info].merge(nickname: 'hugocorbucci')
+        )
 
         expect(auth_user.twitter_username).to eq('hugocorbucci')
         expect(auth_user.last_name).to eq(user.last_name)
