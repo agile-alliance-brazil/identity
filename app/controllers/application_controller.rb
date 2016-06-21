@@ -21,13 +21,13 @@ class ApplicationController < ActionController::Base
                   remember_me).freeze
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) do |u|
+    devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(*UPDATEABLE)
     end
-    devise_parameter_sanitizer.for(:sign_in) do |u|
+    devise_parameter_sanitizer.permit(:sign_in) do |u|
       u.permit(:login, :username, :email, :password, :remember_me)
     end
-    devise_parameter_sanitizer.for(:account_update) do |u|
+    devise_parameter_sanitizer.permit(:account_update) do |u|
       u.permit(*UPDATEABLE)
     end
   end
