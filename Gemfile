@@ -11,7 +11,7 @@ def darwin_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /darwin/ ? require_as : false
 end
 
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 4.2' # TODO: Needs konacha > 4.0.0 and lol_dba > 2.0.3 to upgrade to 5
 gem 'haml', '~> 4.0'
 gem 'will_paginate', '~> 3.1'
 gem 'devise', '~> 4.0'
@@ -54,7 +54,7 @@ group :development do
   # gem 'capistrano-bundler', require: false
   gem 'foreman'
   gem 'bullet'
-  gem 'lol_dba'
+  gem 'lol_dba' # TODO: Upgrade to allow for rails upgrade
   gem 'byebug'
   gem 'pry'
   gem 'web-console'
@@ -81,7 +81,7 @@ group :development, :test do
   gem 'rb-inotify', require: linux_only('rb-inotify')
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'konacha'
+  gem 'konacha' # TODO: Upgrade to allow for rails upgrade
   gem 'guard-konacha-rails'
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'selenium-webdriver'
