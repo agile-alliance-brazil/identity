@@ -58,7 +58,7 @@ group :development do
   gem 'lol_dba' # https://github.com/plentz/lol_dba/pull/73 to update
   gem 'byebug'
   gem 'pry'
-  gem 'web-console', '3.3.1'
+  gem 'web-console'
 end
 
 group :test do
