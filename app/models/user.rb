@@ -97,6 +97,10 @@ class User < ActiveRecord::Base
     username.blank? ? super : "#{id}-#{username.parameterize}"
   end
 
+  def admin?
+    email == 'hugo.corbucci@gmail.com'
+  end
+
   private
 
   def in_brazil?

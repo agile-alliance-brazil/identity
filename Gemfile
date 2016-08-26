@@ -11,12 +11,13 @@ def darwin_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /darwin/ ? require_as : false
 end
 
-gem 'rails', '~> 4.2' # TODO: 5.0 needs konacha > 4.0.0 and lol_dba > 2.0.3
+gem 'rails', '~> 4.2' # TODO: 5.0 needs konacha > 4.0.0
 gem 'haml', '~> 4.0'
 gem 'will_paginate', '~> 3.1'
 gem 'devise', '~> 4.0'
 gem 'devise-i18n'
-gem 'doorkeeper', '~> 4.0.0'
+gem 'doorkeeper', '~> 4.2'
+gem 'doorkeeper-i18n'
 gem 'newrelic_rpm'
 gem 'attribute_normalizer'
 gem 'aws-ses', require: 'aws/ses'
@@ -54,7 +55,7 @@ group :development do
   # gem 'capistrano-bundler', require: false
   gem 'foreman'
   gem 'bullet'
-  gem 'lol_dba' # TODO: Upgrade to allow for rails upgrade
+  gem 'lol_dba' # https://github.com/plentz/lol_dba/pull/73 to update
   gem 'byebug'
   gem 'pry'
   gem 'web-console'

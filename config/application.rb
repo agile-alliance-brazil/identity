@@ -30,12 +30,5 @@ module Identity
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
-
-    config.to_prepare do
-      Doorkeeper::ApplicationController.layout 'application'
-      Doorkeeper::ApplicationController.before_filter do |_controller|
-        I18n.locale = params[:locale] || current_user.try(:default_locale)
-      end
-    end
   end
 end
