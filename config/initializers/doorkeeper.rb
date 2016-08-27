@@ -5,7 +5,12 @@ Doorkeeper.configure do
   # This block will be called to check whether the resource owner is
   # authenticated or not.
   resource_owner_authenticator do
-    current_user || redirect_to(new_user_session_url)
+    if current_user
+      current_user
+    else
+      session['omniauth.origin'] = request.fullpath
+      redirect_to(new_user_session_url)
+    end
   end
 
   # If you want to restrict access to the web interface for adding oauth
