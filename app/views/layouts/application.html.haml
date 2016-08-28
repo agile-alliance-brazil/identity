@@ -11,5 +11,5 @@
         - if msg.is_a?(String)
           .alert{class: "alert-#{name.to_s == 'notice' ? 'success' : 'danger'} #{name}"}
             %button.close{type: 'button', :'data-dismiss' => 'alert', :'aria-hidden' => 'true'} &times;
-            = content_tag :div, msg, :id => "flash_#{name}"
+            = content_tag :div, msg.html_safe, id: "flash_#{name}"
       = yield
