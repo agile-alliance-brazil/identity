@@ -246,8 +246,8 @@ RSpec.describe User, type: :model do
     expect(user.to_param.ends_with?('-danilo-sato-1990-2')).to be false
   end
 
-  it 'should have "pt" as default locale' do
+  it 'should have "pt-BR" as default locale' do
     user = FactoryGirl.build(:user)
-    expect(user.default_locale).to eq('pt')
+    expect(user.default_locale).to eq('pt-BR')
   end
 end

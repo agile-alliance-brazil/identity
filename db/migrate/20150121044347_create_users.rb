@@ -14,7 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.text :bio
       t.string :country
       t.string :twitter_username
-      t.string :default_locale, null: false, default: 'pt'
+      t.string :default_locale, null: false, default: 'pt-BR'
 
       t.timestamps
 

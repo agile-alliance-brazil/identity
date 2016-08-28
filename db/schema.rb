@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 20160824222659) do
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                              null: false
-    t.string   "first_name",                            null: false
-    t.string   "last_name",                             null: false
+    t.string   "username",                                 null: false
+    t.string   "first_name",                               null: false
+    t.string   "last_name",                                null: false
     t.string   "phone"
     t.string   "state"
     t.string   "city"
@@ -72,11 +72,11 @@ ActiveRecord::Schema.define(version: 20160824222659) do
     t.text     "bio"
     t.string   "country"
     t.string   "twitter_username"
-    t.string   "default_locale",         default: "pt", null: false
+    t.string   "default_locale",         default: "pt-BR", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                                 null: false
-    t.string   "encrypted_password",                    null: false
+    t.string   "email",                                    null: false
+    t.string   "encrypted_password",                       null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -1,0 +1,6 @@
+- public_attributes = %i(first_name last_name organization website_url bio country twitter_username default_locale)
+- private_attributes = %i(username phone state city email)
+- attributes = public_attributes
+- attributes += private_attributes if @user == current_user
+- data = @user.attributes.select{|a| attributes.include?(a.to_sym)}.merge({id: @user.id})
+= data.to_json.html_safe
