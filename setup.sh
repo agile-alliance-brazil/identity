@@ -51,4 +51,4 @@ if [[ -z `which phantomjs` ]]; then
   fi
 fi
 
-bundle install
+${MY_DIR}/bin/bundle install
