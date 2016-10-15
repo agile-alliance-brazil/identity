@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   end
 
   def self.user_for(auth_data)
-    user = User.find_by_email(auth_data[:info][:email])
+    user = User.find_by(email: auth_data[:info][:email])
     if user.nil?
       user = User.from_auth_info(auth_data[:info])
       user.password = Devise.friendly_token[8, 30]

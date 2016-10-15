@@ -55,7 +55,7 @@ group :development do
   # gem 'capistrano-bundler', require: false
   gem 'foreman'
   gem 'bullet'
-  gem 'lol_dba' # https://github.com/plentz/lol_dba/pull/73 to update
+  gem 'lol_dba'
   gem 'byebug'
   gem 'pry'
   gem 'web-console'
