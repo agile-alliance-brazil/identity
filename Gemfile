@@ -11,37 +11,34 @@ def darwin_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /darwin/ ? require_as : false
 end
 
-gem 'rails', '~> 4.2' # TODO: 5.0 needs konacha > 4.0.0
-gem 'haml', '~> 4.0'
-gem 'will_paginate', '~> 3.1'
+gem 'attribute_normalizer'
+gem 'aws-ses', require: 'aws/ses'
+gem 'bootstrap-sass', '~> 3.3'
+gem 'coffee-rails', '~>4.1'
 gem 'devise', '~> 4.0'
 gem 'devise-i18n'
 gem 'doorkeeper', '~> 4.2'
 gem 'doorkeeper-i18n'
+gem 'haml', '~> 4.0'
+gem 'jquery-rails', '~>4.0'
+gem 'jquery-ui-rails', '~>5.0'
 gem 'newrelic_rpm'
-gem 'attribute_normalizer'
-gem 'aws-ses', require: 'aws/ses'
-
 gem 'omniauth'
 # general
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-# gem 'omniauth-google-oauth2'
-# gem 'omniauth-linkedin-oauth2'
-# dev
 # gem 'omniauth-azure-oauth2'
-# gem 'omniauth-github'
-# gem 'omniauth2-gitlab'
-# gem 'omniauth-heroku'
 # gem 'omniauth-digitalocean'
-
-gem 'jquery-rails', '~>4.0'
+gem 'omniauth-facebook'
+# gem 'omniauth-github'
+# gem 'omniauth-google-oauth2'
+# gem 'omniauth-heroku'
+# gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-twitter'
+# gem 'omniauth2-gitlab'
+gem 'rails', '~> 4.2' # TODO: 5.0 needs konacha > 4.0.0
 gem 'sass-rails', '~>5.0'
-gem 'bootstrap-sass', '~> 3.3'
-gem 'coffee-rails', '~>4.1'
-gem 'jquery-ui-rails', '~>5.0'
-gem 'uglifier', '~>3.0'
 gem 'turbolinks'
+gem 'uglifier', '~>3.0'
+gem 'will_paginate', '~> 3.1'
 
 group :production do
   gem 'pg'
@@ -51,42 +48,42 @@ end
 group :development do
   # TODO: Either remove or set up capistrano
   # gem 'capistrano', '3.4.1', require: false
-  # gem 'capistrano-rails', require: false
   # gem 'capistrano-bundler', require: false
-  gem 'foreman'
+  # gem 'capistrano-rails', require: false
   gem 'bullet'
-  gem 'lol_dba'
   gem 'byebug'
+  gem 'foreman'
+  gem 'lol_dba'
   gem 'pry'
   gem 'web-console'
 end
 
 group :test do
-  gem 'shoulda-matchers', require: false
-  gem 'factory_girl_rails'
-  gem 'email_spec'
-  gem 'simplecov'
   gem 'codeclimate-test-reporter', '~> 1.0.0'
+  gem 'email_spec'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', require: false
+  gem 'simplecov'
 end
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'rspec-its'
-  gem 'rspec-collection_matchers'
-  gem 'guard-rspec'
+  gem 'brakeman', require: false
+  gem 'guard-konacha-rails'
   gem 'guard-livereload', require: false
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'konacha' # TODO: Upgrade to allow for rails upgrade
+  gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'pry-rails'
   gem 'rb-fsevent', require: darwin_only('rb-fsevent')
-  gem 'terminal-notifier-guard', require: darwin_only('terminal-notifier-guard')
   gem 'rb-inotify', require: linux_only('rb-inotify')
+  gem 'rspec-collection_matchers'
+  gem 'rspec-its'
+  gem 'rspec-rails'
+  gem 'rubocop'
+  gem 'selenium-webdriver'
   gem 'spring'
   gem 'spring-commands-rspec'
-  gem 'konacha' # TODO: Upgrade to allow for rails upgrade
-  gem 'guard-konacha-rails'
-  gem 'poltergeist', require: 'capybara/poltergeist'
-  gem 'selenium-webdriver'
-  gem 'rubocop'
-  gem 'guard-rubocop'
-  gem 'brakeman', require: false
+  gem 'sqlite3'
+  gem 'terminal-notifier-guard', require: darwin_only('terminal-notifier-guard')
 end
