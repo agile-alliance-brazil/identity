@@ -21,7 +21,7 @@ gem 'doorkeeper', '~> 4.2'
 gem 'doorkeeper-i18n'
 gem 'haml', '~> 4.0'
 gem 'jquery-rails', '~>4.0'
-gem 'jquery-ui-rails', '~>5.0'
+gem 'jquery-ui-rails', '~>6.0'
 gem 'newrelic_rpm'
 gem 'omniauth'
 # general
