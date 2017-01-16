@@ -1,4 +1,5 @@
 AllCops:
+  DisplayCopNames: true
   Exclude:
     - 'vendor/**/*' # Pulled from Gemfile
     - 'db/schema.rb' # Auto-generated file
@@ -9,3 +10,7 @@ Rails:
 
 Style/SymbolArray:
   Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'

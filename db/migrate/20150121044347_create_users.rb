@@ -1,6 +1,7 @@
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/BlockLength
+# Creates the user table to hold all information about a user
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
