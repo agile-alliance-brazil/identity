@@ -34,7 +34,7 @@ gem 'omniauth-facebook'
 # gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter'
 # gem 'omniauth2-gitlab'
-gem 'rails', '~> 4.2' # TODO: 5.0 needs konacha > 4.0.0
+gem 'rails', '~> 5.0'
 gem 'sass-rails', '~>5.0'
 gem 'turbolinks'
 gem 'uglifier', '~>3.0'
