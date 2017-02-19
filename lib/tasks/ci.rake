@@ -1,11 +1,11 @@
 # encoding: UTF-8
 begin
-  desc 'Task to run on CI: runs Rubocop cops, RSpec specs and Konacha specs'
-  task ci: %i(rubocop spec codeclimate-test-reporter konacha:run brakeman)
+  desc 'Task to run on CI: runs Rubocop cops, RSpec specs and brakeman'
+  task ci: %i(rubocop spec codeclimate-test-reporter brakeman)
 
   namespace :ci do
-    desc 'Task to run on CI: runs Rubocop cops, RSpec specs and Konacha specs'
-    task all: %i(rubocop spec codeclimate-test-reporter konacha:run brakeman)
+    desc 'Task to run on CI: runs Rubocop cops, RSpec specs and brakeman'
+    task all: %i(rubocop spec codeclimate-test-reporter brakeman)
   end
 
   require 'rubocop/rake_task'
@@ -23,5 +23,5 @@ begin
 
   task default: :'ci:all'
 rescue LoadError
-  STDERR.puts "Couldn't load rubocop, rspec, brakeman or konacha."
+  STDERR.puts "Couldn't load rubocop, rspec or brakeman."
 end

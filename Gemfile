@@ -68,11 +68,9 @@ end
 
 group :development, :test do
   gem 'brakeman', require: false
-  gem 'guard-konacha-rails'
   gem 'guard-livereload', require: false
   gem 'guard-rspec'
   gem 'guard-rubocop'
-  gem 'konacha' # TODO: Upgrade to allow for rails upgrade
   gem 'poltergeist', require: 'capybara/poltergeist'
   gem 'pry-rails'
   gem 'rb-fsevent', require: darwin_only('rb-fsevent')
