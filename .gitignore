@@ -7,6 +7,7 @@ capybara-*.html
 /public/system
 /coverage/
 /spec/tmp
+bin/timeout
 **/.DS_Store
 **.orig
 rerun.txt
@@ -33,3 +34,4 @@ bower.json
 
 # Don't share your local environment configs.
 .env
+Gemfile.md5.new

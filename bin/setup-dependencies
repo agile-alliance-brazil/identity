@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+set -e
+# set -x # Uncomment to debug
+
+MY_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+
+cd "${MY_DIR}"
+
+OSX="false"
+if (uname -a | grep -q Darwin); then
+  OSX="true"
+fi
+
+export PATH="${PATH}:${MY_DIR}/bin"
+
+if [ "${OSX}" == "true" ] && [ -z "$(which brew)" ]; then
+  echo "Installing brew. This will ask for your password..."
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
+if [ "${OSX}" == "false" ] && [ -z "$(which apt-get)" ]; then
+  echo "This setup is only ready for apt-get based linuxes and OSX. You'll have to open and edit this file to fix it for your distribution."
+  exit 1
+fi
+
+if [ -z "$(which docker)" ]; then
+  if [ "${OSX}" == "true" ]; then
+    echo "Updating brew..."
+    brew update &> /dev/null
+    echo "Installing docker-machine, docker-compose and docker..."
+    brew install docker-machine docker-compose docker &> /dev/null
+  else
+    echo "Installing docker-compose and docker..."
+    wget -qO- https://get.docker.com/ | sh
+    sudo usermod -aG docker "$(whoami)"
+    sudo apt-get -y install python-pip
+    sudo pip install docker-compose
+  fi
+fi
+
+# Used by wait-for-it
+if [ -z "$(which timeout)" ]; then
+  if [ "${OSX}" == "true" ]; then
+    if [ -z "$(which gtimeout)" ]; then
+      echo "Installing coreutils (for gtimeout)..."
+      brew install coreutils &> /dev/null
+    fi
+
+    if [ ! -f "${MY_DIR}/bin/timeout" ]; then
+      ln -s "$(which gtimeout)" "${MY_DIR}/bin/timeout"
+    fi
+  else
+    echo "Ensure timeout is in your path before proceeding"
+    exit 1
+  fi
+fi

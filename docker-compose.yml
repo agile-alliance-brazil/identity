@@ -1,0 +1,48 @@
+version: '2.1'
+
+services:
+  migrations: &app_base
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    image: agilealliancebrazil/identity:development
+    links:
+      - sql_db:db.local
+    volumes:
+      - .:/app
+    command: bundle exec rake db:create db:migrate
+    environment: &dev_environment
+      DATABASE_URL: postgres://postgres:s3kr3t@db.local:5432/identity_development
+      RACK_ENV: development
+      RAILS_ENV: development
+
+  test:
+    <<: *app_base
+    command: bundle exec guard start --no-bundler-warning --no-interactions --force-polling
+    ports:
+      - '35729:35729'
+    environment: &test_environment
+      DATABASE_URL: postgres://postgres:s3kr3t@db.local:5432/identity_test
+      RACK_ENV: test
+      RAILS_ENV: test
+
+  test_migrations:
+    <<: *app_base
+    command: bundle exec rake db:create db:migrate
+    environment:
+      <<: *test_environment
+
+  web:
+    <<: *app_base
+    command: bundle exec rails server -p 3000 -b 0.0.0.0
+    ports:
+      - '3000'
+    environment:
+      <<: *dev_environment
+
+  sql_db:
+    image: postgres:9.6.2-alpine
+    ports:
+      - '5432'
+    environment:
+      POSTGRES_PASSWORD: s3kr3t

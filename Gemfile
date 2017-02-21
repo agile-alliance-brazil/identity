@@ -36,6 +36,7 @@ gem 'omniauth-twitter'
 # gem 'omniauth2-gitlab'
 gem 'rails', '~> 5.0'
 gem 'sass-rails', '~>5.0'
+gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier', '~>3.0'
 gem 'will_paginate', '~> 3.1'
@@ -55,6 +56,7 @@ group :development do
   gem 'foreman'
   gem 'lol_dba'
   gem 'pry'
+  gem 'rack-livereload'
   gem 'web-console'
 end
 
