@@ -70,6 +70,7 @@ end
 
 group :development, :test do
   gem 'brakeman', require: false
+  gem 'dotenv-rails'
   gem 'guard-livereload', require: false
   gem 'guard-rspec'
   gem 'guard-rubocop'
