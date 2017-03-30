@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 require_relative '../rails_helper'
 
 RSpec.describe LayoutHelper, type: :helper do

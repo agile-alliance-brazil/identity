@@ -1,4 +1,5 @@
 # encoding: UTF-8
+
 ActionMailer::Base.add_delivery_method(
   :ses, AWS::SES::Base,
   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
