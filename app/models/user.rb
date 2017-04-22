@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     user.state = nil unless in_brazil?
   end
 
-  scope :search, ->(q) { where('username LIKE ?', "%#{q}%") }
+  scope(:search, ->(q) { where('username LIKE ?', "%#{q}%") })
 
   def self.from_omniauth(auth)
     keys = { provider: auth[:provider], uid: auth[:uid] }

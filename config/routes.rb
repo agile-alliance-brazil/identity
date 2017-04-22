@@ -9,7 +9,7 @@ Rails.application.routes.draw do
                omniauth_callbacks: 'users/omniauth_callbacks'
              }
 
-  resources :users, only: %i(index show) do
+  resources :users, only: %i[index show] do
     collection do
       get :me
     end

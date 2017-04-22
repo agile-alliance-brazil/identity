@@ -2,11 +2,11 @@
 
 begin
   desc 'Task to run on CI: runs Rubocop cops, RSpec specs and brakeman'
-  task ci: %i(rubocop spec codeclimate-test-reporter brakeman)
+  task ci: %i[rubocop spec codeclimate-test-reporter brakeman]
 
   namespace :ci do
     desc 'Task to run on CI: runs Rubocop cops, RSpec specs and brakeman'
-    task all: %i(rubocop spec codeclimate-test-reporter brakeman)
+    task all: %i[rubocop spec codeclimate-test-reporter brakeman]
   end
 
   require 'rubocop/rake_task'

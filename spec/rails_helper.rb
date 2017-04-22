@@ -36,7 +36,6 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
-  # rubocop:disable Style/MixinGrouping
   # Rubocop bug from 0.48.0. Already fixed in master. Remove exclusion
   # when rubocop > 0.48.0
   config.include AttributeNormalizer::RSpecMatcher, type: :model

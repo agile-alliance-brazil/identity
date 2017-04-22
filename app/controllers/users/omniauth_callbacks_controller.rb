@@ -3,7 +3,7 @@
 module Users
   # Callback controller to handle omniauth returns with token
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    USER_DATA = %w(email name first_name last_name username nickname).freeze
+    USER_DATA = %w[email name first_name last_name username nickname].freeze
 
     def facebook
       @user = User.from_omniauth(request.env['omniauth.auth'])
