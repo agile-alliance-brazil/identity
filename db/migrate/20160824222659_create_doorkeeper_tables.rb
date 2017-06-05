@@ -1,6 +1,6 @@
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/AbcSize
-# rubocop:disable Style/ExtraSpacing
+# rubocop:disable Layout/ExtraSpacing
 # Creates the tables needed by doorkeeper to hold applications and access codes
 class CreateDoorkeeperTables < ActiveRecord::Migration[4.2]
   def change

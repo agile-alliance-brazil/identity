@@ -220,8 +220,11 @@ RSpec.describe User, type: :model do
       subject { FactoryGirl.create(:user, country: 'BR') }
 
       it do
-        is_expected.to validate_uniqueness_of(:email).case_insensitive
-          .with_message(I18n.t('errors.messages.taken'))
+        is_expected.to(
+          validate_uniqueness_of(:email)
+            .case_insensitive
+            .with_message(I18n.t('errors.messages.taken'))
+        )
       end
       it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
       it { is_expected.to validate_uniqueness_of(:username).case_insensitive }

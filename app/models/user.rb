@@ -2,7 +2,7 @@
 # encoding: UTF-8
 
 # Represents a user in the system
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   AUTH_PROVIDERS = Rails.application.secrets.omniauth.keys
   SESSION_DATA_KEY = 'devise.omniauth_data'.freeze
   devise :database_authenticatable, :registerable, :recoverable,

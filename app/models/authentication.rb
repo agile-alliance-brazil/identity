@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 # Represents an authentication coming from OAuth
-class Authentication < ActiveRecord::Base
+class Authentication < ApplicationRecord
   belongs_to :user
 
   validates :provider, presence: true
