@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 module Users
   # Callback controller to handle omniauth returns with token
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController

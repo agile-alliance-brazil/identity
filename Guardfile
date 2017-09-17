@@ -43,16 +43,17 @@ guard :rspec, cmd: 'bundle exec spring rspec' do
   end
 end
 
-guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|scss|coffee|html))).*}) do |m|
-    "/assets/#{m[3]}"
-  end
-end
+# guard 'livereload', host: (ENV['GUARD_HOST'] || '0.0.0.0') do
+#   watch(%r{app/views/.+\.(erb|haml|slim)})
+#   watch(%r{app/helpers/.+\.rb})
+#   watch(%r{public/.+\.(css|js|html)})
+#   watch(%r{config/locales/.+\.yml})
+#   # Rails Assets Pipeline
+#   watch(
+#   %r{(app|vendor)(/assets/\w+/(.+\.(css|js|scss|coffee|html))).*}) do |m|
+#     "/assets/#{m[3]}"
+#   end
+# end
 
 guard :rubocop do
   watch(/.+\.rb$/)

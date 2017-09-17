@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 
 services:
   migrations: &app_base
@@ -19,8 +19,6 @@ services:
   test:
     <<: *app_base
     command: bundle exec guard start --no-bundler-warning --no-interactions --force-polling
-    ports:
-      - '35729:35729'
     environment: &test_environment
       DATABASE_URL: postgres://postgres:s3kr3t@db.local:5432/identity_test
       RACK_ENV: test
@@ -35,6 +33,8 @@ services:
   web:
     <<: *app_base
     command: bundle exec rails server -p 3000 -b 0.0.0.0
+    links:
+      - sql_db:db.local
     ports:
       - '3000'
     environment:

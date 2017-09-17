@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 # Represents an authentication coming from OAuth
 class Authentication < ApplicationRecord
   belongs_to :user

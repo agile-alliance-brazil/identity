@@ -1,5 +1,3 @@
-# encoding: UTF-8
-
 FactoryGirl.define do
   sequence(:last_name) { |n| "Name#{n}" }
 
