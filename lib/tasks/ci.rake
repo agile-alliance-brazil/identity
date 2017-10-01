@@ -11,7 +11,7 @@ begin
   RuboCop::RakeTask.new(:rubocop)
 
   task :brakeman do
-    sh 'bundle exec brakeman -z'
+    sh 'bundle exec brakeman -z --no-pager'
   end
 
   task :'codeclimate-test-reporter' do
