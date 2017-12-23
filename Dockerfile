@@ -9,7 +9,7 @@ EXPOSE 3000
 RUN gem install bundler
 COPY Gemfile Gemfile.lock ./
 COPY vendor ./vendor
-RUN bundler install  --without development test
+RUN bundle install  --without development test
 
 COPY . ./
 

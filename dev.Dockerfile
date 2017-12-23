@@ -8,6 +8,6 @@ CMD ['rails', 'server', '-p', '3000']
 RUN gem install bundler
 COPY Gemfile Gemfile.lock ./
 COPY vendor ./vendor
-RUN bundler install
+RUN bundle install
 
 COPY . ./

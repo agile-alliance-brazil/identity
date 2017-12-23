@@ -10,7 +10,7 @@ services:
       - sql_db:db.local
     volumes:
       - .:/app
-    command: bundler exec rake db:create db:migrate
+    command: bundle exec rake db:create db:migrate
     environment: &dev_environment
       DATABASE_URL: postgres://postgres:s3kr3t@db.local:5432/identity_development
       RACK_ENV: development
@@ -18,7 +18,7 @@ services:
 
   test:
     <<: *app_base
-    command: bundler exec guard start --no-bundler-warning --no-interactions --force-polling
+    command: bundle exec guard start --no-bundler-warning --no-interactions --force-polling
     environment: &test_environment
       DATABASE_URL: postgres://postgres:s3kr3t@db.local:5432/identity_test
       RACK_ENV: test
@@ -26,13 +26,13 @@ services:
 
   test_migrations:
     <<: *app_base
-    command: bundler exec rake db:create db:migrate
+    command: bundle exec rake db:create db:migrate
     environment:
       <<: *test_environment
 
   web:
     <<: *app_base
-    command: bundler exec rails server -p 3000 -b 0.0.0.0
+    command: bundle exec rails server -p 3000 -b 0.0.0.0
     links:
       - sql_db:db.local
     ports:
