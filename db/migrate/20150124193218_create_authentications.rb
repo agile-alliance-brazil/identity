@@ -5,6 +5,8 @@ class CreateAuthentications < ActiveRecord::Migration[4.2]
       t.string :user_id
       t.string :provider
       t.string :uid
+
+      t.timestamps null: false
     end
   end
 end

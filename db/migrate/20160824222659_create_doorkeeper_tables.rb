@@ -70,3 +70,7 @@ class CreateDoorkeeperTables < ActiveRecord::Migration[4.2]
     )
   end
 end
+
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Layout/ExtraSpacing

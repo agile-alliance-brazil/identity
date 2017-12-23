@@ -57,3 +57,7 @@ class CreateUsers < ActiveRecord::Migration[4.2]
     add_index :users, :reset_password_token
   end
 end
+
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/BlockLength
