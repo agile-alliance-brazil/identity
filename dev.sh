@@ -29,17 +29,21 @@ if [ "$OSX" == "true" ]; then
   eval "$(docker-machine env)"
 fi
 
-if [ ! -f "${MY_DIR}/Gemfile.md5" ]; then
-  touch "${MY_DIR}/Gemfile.md5"
+if [ ! -f "${MY_DIR}/Gemfile.lock" ]; then
+  touch "${MY_DIR}/Gemfile.lock"
+fi
+if [ ! -f "${MY_DIR}/Gemfile.lock.md5" ]; then
+  touch "${MY_DIR}/Gemfile.lock.md5"
 fi
 if [ "${OSX}" == "true" ]; then
-  MD5_SUM_COMMAND="md5 -q Gemfile"
+  MD5_SUM_COMMAND="md5 -q Gemfile.lock"
 else
-  MD5_SUM_COMMAND="md5sum Gemfile | awk '{print \$1}'"
+  MD5_SUM_COMMAND="md5sum Gemfile.lock | awk '{print \$1}'"
 fi
-${MD5_SUM_COMMAND} > "${MY_DIR}/Gemfile.md5.new"
-if [ ! -z "$(diff -q "${MY_DIR}/Gemfile.md5" "${MY_DIR}/Gemfile.md5.new")" ]; then
-  mv "${MY_DIR}/Gemfile.md5.new" "${MY_DIR}/Gemfile.md5"
+TEMP_MD5=$(mktemp)
+${MD5_SUM_COMMAND} > "${TEMP_MD5}"
+if [ ! -z "$(diff -q "${MY_DIR}/Gemfile.lock.md5" "${TEMP_MD5}")" ]; then
+  cp "${TEMP_MD5}" "${MY_DIR}/Gemfile.lock.md5"
   docker-compose build
 fi
 

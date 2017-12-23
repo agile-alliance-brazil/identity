@@ -37,7 +37,7 @@ gem 'rails', '~> 5.0'
 gem 'sass-rails', '~>5.0'
 gem 'therubyracer'
 gem 'turbolinks'
-gem 'uglifier', '~>3.0'
+gem 'uglifier', '~>4.0'
 gem 'will_paginate', '~> 3.1'
 
 group :production do
