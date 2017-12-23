@@ -386,7 +386,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3)
   brakeman
   bullet
-  bundler (= 1.16.0)
+  bundler
   byebug
   codeclimate-test-reporter (~> 1.0.0)
   coffee-rails (~> 4.1)
@@ -440,4 +440,4 @@ RUBY VERSION
    ruby 2.4.3p205
 
 BUNDLED WITH
-   1.16.0
+   1.16.1

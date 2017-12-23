@@ -11,12 +11,12 @@ begin
   RuboCop::RakeTask.new(:rubocop)
 
   task :brakeman do
-    sh 'bundle exec brakeman -z --no-pager'
+    sh 'bundler exec brakeman -z --no-pager'
   end
 
   task :'codeclimate-test-reporter' do
     sh 'if [ ! -z "${CODECLIMATE_REPO_TOKEN}" ]; then\
-      bundle exec codeclimate-test-reporter;\
+      bundler exec codeclimate-test-reporter;\
       fi'
   end
 

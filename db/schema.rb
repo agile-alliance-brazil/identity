@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20160824222659) do
     t.string "user_id"
     t.string "provider"
     t.string "uid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "oauth_access_grants", id: :serial, force: :cascade do |t|

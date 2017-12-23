@@ -5,9 +5,9 @@ WORKDIR /app
 ENV HOME=/app PATH=/app/bin:$PATH
 CMD ['rails', 'server', '-p', '3000']
 
-RUN gem install bundler -v 1.16.0
+RUN gem install bundler
 COPY Gemfile Gemfile.lock ./
 COPY vendor ./vendor
-RUN bundle install
+RUN bundler install
 
 COPY . ./

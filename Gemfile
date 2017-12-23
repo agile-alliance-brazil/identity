@@ -13,7 +13,7 @@ end
 gem 'attribute_normalizer'
 gem 'aws-ses', require: 'aws/ses'
 gem 'bootstrap-sass', '~> 3.3'
-gem 'bundler', '1.16.0' # because of https://github.com/rubygems/rubygems/issues/2055
+gem 'bundler'
 gem 'coffee-rails', '~>4.1'
 gem 'devise', '~> 4.0'
 gem 'devise-i18n'
