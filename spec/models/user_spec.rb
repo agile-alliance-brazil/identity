@@ -2,7 +2,7 @@ require_relative '../rails_helper'
 
 RSpec.describe User, type: :model do
   context 'builders' do
-    let(:user) { FactoryGirl.build(:user) }
+    let(:user) { FactoryBot.build(:user) }
     let(:auth_params) do
       {
         provider: 'provider_id',
@@ -128,27 +128,27 @@ RSpec.describe User, type: :model do
 
   context 'before validations' do
     it 'should trim @ from twitter username if present' do
-      user = FactoryGirl.build(:user, twitter_username: '@dtsato')
+      user = FactoryBot.build(:user, twitter_username: '@dtsato')
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
 
-      user = FactoryGirl.build(:user, twitter_username: '  @dtsato  ')
+      user = FactoryBot.build(:user, twitter_username: '  @dtsato  ')
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
     end
 
     it 'should not change twitter username if @ is not present' do
-      user = FactoryGirl.build(:user, twitter_username: 'dtsato')
+      user = FactoryBot.build(:user, twitter_username: 'dtsato')
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
 
-      user = FactoryGirl.build(:user, twitter_username: '  dtsato  ')
+      user = FactoryBot.build(:user, twitter_username: '  dtsato  ')
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
     end
 
     it 'should remove state for non brazilians' do
-      user = FactoryGirl.build(:user, country: 'US', state: 'Illinois')
+      user = FactoryBot.build(:user, country: 'US', state: 'Illinois')
       expect(user).to be_valid
       expect(user.state).to be_blank
     end
@@ -174,7 +174,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of :last_name }
 
     context 'brazilians' do
-      subject { FactoryGirl.build(:user, country: 'BR') }
+      subject { FactoryBot.build(:user, country: 'BR') }
       it { is_expected.not_to validate_presence_of :state }
     end
 
@@ -215,7 +215,7 @@ RSpec.describe User, type: :model do
     it { is_expected.not_to allow_value('@12.com').for(:email) }
 
     context 'uniqueness' do
-      subject { FactoryGirl.create(:user, country: 'BR') }
+      subject { FactoryBot.create(:user, country: 'BR') }
 
       it do
         is_expected.to(
@@ -241,7 +241,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'should overide to_param with username' do
-    user = FactoryGirl.create(:user, username: 'danilo.sato 1990@2')
+    user = FactoryBot.create(:user, username: 'danilo.sato 1990@2')
     expect(user.to_param.ends_with?('-danilo-sato-1990-2')).to be true
 
     user.username = nil
@@ -249,7 +249,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'should have "pt-BR" as default locale' do
-    user = FactoryGirl.build(:user)
+    user = FactoryBot.build(:user)
     expect(user.default_locale).to eq('pt-BR')
   end
 end
