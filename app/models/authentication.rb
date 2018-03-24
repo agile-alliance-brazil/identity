@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Represents an authentication coming from OAuth
 class Authentication < ApplicationRecord
   belongs_to :user

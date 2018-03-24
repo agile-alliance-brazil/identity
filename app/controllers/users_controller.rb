@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Controller to list users and show a specific one
 class UsersController < ApplicationController
   def index; end

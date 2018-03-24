@@ -1,10 +1,9 @@
 # frozen_string_literal: true
-# encoding: UTF-8
 
 # Represents a user in the system
 class User < ApplicationRecord
   AUTH_PROVIDERS = Rails.application.secrets.omniauth.keys
-  SESSION_DATA_KEY = 'devise.omniauth_data'.freeze
+  SESSION_DATA_KEY = 'devise.omniauth_data'
   devise :database_authenticatable, :registerable, :recoverable,
          :trackable, :rememberable, :validatable, :omniauthable,
          :confirmable,
@@ -30,7 +29,7 @@ class User < ApplicationRecord
   validates :email, length: { within: 6..100 }
 
   before_validation do |user|
-    if user.twitter_username =~ /\A@/
+    if user.twitter_username&.match?(/\A@/)
       user.twitter_username = user.twitter_username[1..-1]
     end
     user.state = nil unless in_brazil?

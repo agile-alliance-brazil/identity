@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Migration to create authentications
 class CreateAuthentications < ActiveRecord::Migration[4.2]
   def change

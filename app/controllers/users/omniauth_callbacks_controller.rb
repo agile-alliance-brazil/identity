@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Users
   # Callback controller to handle omniauth returns with token
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
