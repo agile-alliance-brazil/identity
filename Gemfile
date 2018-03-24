@@ -4,12 +4,12 @@ source 'https://rubygems.org'
 ruby '2.4.3'
 
 def linux_only(require_as)
-  RbConfig::CONFIG['host_os'].match?(/linux/) ? require_as : false
+  RbConfig::CONFIG['host_os'].match(/linux/).nil? ? false : require_as
 end
 
 # Mac OS X
 def darwin_only(require_as)
-  RbConfig::CONFIG['host_os'].match?(/darwin/) ? require_as : false
+  RbConfig::CONFIG['host_os'].match(/darwin/).nil? ? false : require_as
 end
 
 gem 'attribute_normalizer'
