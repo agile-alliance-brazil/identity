@@ -57,7 +57,7 @@ end
 #   end
 # end
 
-guard :rubocop do
+guard :rubocop, cli: ['--require', 'rubocop-rspec'] do
   watch(/.+\.rb$/)
   watch(%r{(?:.+/)?\.rubocop\.yml$}) { |m| File.dirname(m[0]) }
 end
