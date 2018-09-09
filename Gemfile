@@ -84,6 +84,7 @@ group :development, :test do
   gem 'rspec-its'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'selenium-webdriver'
   gem 'spring'
   gem 'spring-commands-rspec'
