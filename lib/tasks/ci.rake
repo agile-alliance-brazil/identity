@@ -10,7 +10,9 @@ begin
   end
 
   require 'rubocop/rake_task'
-  RuboCop::RakeTask.new(:rubocop)
+  RuboCop::RakeTask.new(:rubocop) do |task|
+    task.requires << 'rubocop-rspec'
+  end
 
   task :brakeman do
     sh 'bundle exec brakeman -z --no-pager'

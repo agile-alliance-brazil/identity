@@ -11,3 +11,6 @@ Rails:
 Metrics/BlockLength:
   Exclude:
     - '**/*_spec.rb'
+
+RSpec/MultipleExpectations:
+  Enabled: false

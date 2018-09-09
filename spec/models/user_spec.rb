@@ -3,7 +3,7 @@
 require_relative '../rails_helper'
 
 RSpec.describe User, type: :model do
-  context 'builders' do
+  describe 'builders' do
     let(:user) { FactoryBot.build(:user) }
     let(:auth_params) do
       {
@@ -15,15 +15,17 @@ RSpec.describe User, type: :model do
         }
       }
     end
-    context 'from omniauth' do
-      it 'should find user by authentication from auth object' do
+
+    # rubocop:disable RSpec/ExampleLength
+    describe 'from omniauth' do
+      it 'finds user by authentication from auth object' do
         user.save
         user.authentications.create(auth_params.reject { |k, _v| k == :info })
 
         omni_user = User.from_omniauth(auth_params)
         expect(omni_user).to eq(user)
       end
-      it 'should attach new authentication from auth object' do
+      it 'attaches new authentication from auth object' do
         user.save
 
         omni_user = User.from_omniauth(auth_params)
@@ -35,10 +37,10 @@ RSpec.describe User, type: :model do
         )
         expect(user.authentications.first.uid).to eq(auth_params[:uid])
       end
-      it 'should build from auth object' do
+      it 'builds from auth object' do
         omni_user = User.from_omniauth(auth_params)
 
-        expect(omni_user.id).to_not be_nil
+        expect(omni_user.id).not_to be_nil
         expect(omni_user.first_name).to eq(user.first_name)
         expect(omni_user.last_name).to eq(user.last_name)
         expect(omni_user.email).to eq(user.email)
@@ -50,8 +52,9 @@ RSpec.describe User, type: :model do
         expect(omni_user.authentications.first.uid).to eq(auth_params[:uid])
       end
     end
-    context 'from auth info hash' do
-      it 'should build from info hash' do
+
+    describe 'from auth info hash' do
+      it 'builds from info hash' do
         auth_user = User.from_auth_info(auth_params[:info])
 
         expect(auth_user.id).to be_nil
@@ -61,7 +64,7 @@ RSpec.describe User, type: :model do
         expect(auth_user.username).to eq(user.email)
         expect(auth_user.authentications).to be_empty
       end
-      it 'should build empty user without info' do
+      it 'builds empty user without info' do
         auth_user = User.from_auth_info(nil)
 
         expect(auth_user.id).to be_nil
@@ -71,7 +74,7 @@ RSpec.describe User, type: :model do
         expect(auth_user.email).to be_nil
         expect(auth_user.authentications).to be_empty
       end
-      it 'should change given user based on params' do
+      it 'changes given user based on params' do
         other_user = User.new
         auth_user = User.from_auth_info(auth_params[:info], other_user)
 
@@ -81,7 +84,7 @@ RSpec.describe User, type: :model do
         expect(auth_user.email).to eq(user.email)
         expect(auth_user.username).to eq(user.email)
       end
-      it 'should map nickname to twitter_username' do
+      it 'maps nickname to twitter_username' do
         auth_user = User.from_auth_info(
           auth_params[:info].merge(nickname: 'hugocorbucci')
         )
@@ -92,8 +95,9 @@ RSpec.describe User, type: :model do
         expect(auth_user.username).to eq(user.email)
       end
     end
-    context 'with session' do
-      it 'should recover data from session' do
+
+    describe 'with session' do
+      it 'recovers data from session' do
         auth_user = User.new_with_session(
           {},
           User::SESSION_DATA_KEY => auth_params
@@ -104,7 +108,7 @@ RSpec.describe User, type: :model do
         expect(auth_user.email).to eq(user.email)
         expect(auth_user.username).to eq(user.email)
       end
-      it 'should use default if nothing is in the session' do
+      it 'uses default if nothing is in the session' do
         auth_user = User.new_with_session({}, {})
 
         expect(auth_user.first_name).to be_nil
@@ -112,12 +116,12 @@ RSpec.describe User, type: :model do
         expect(auth_user.email).to be_nil
         expect(auth_user.username).to be_nil
       end
-      it 'should use params if provided' do
+      it 'uses params if provided' do
         auth_user = User.new_with_session({ first_name: 'Hugo' }, {})
 
         expect(auth_user.first_name).to eq('Hugo')
       end
-      it 'should provide preference to params if conflicting data in session' do
+      it 'provides preference to params if conflicting data in session' do
         auth_user = User.new_with_session(
           { first_name: 'Hugo' },
           info: { first_name: 'Danilo' }
@@ -128,8 +132,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  context 'before validations' do
-    it 'should trim @ from twitter username if present' do
+  describe 'before validations' do
+    it 'trims @ from twitter username if present' do
       user = FactoryBot.build(:user, twitter_username: '@dtsato')
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
@@ -139,7 +143,7 @@ RSpec.describe User, type: :model do
       expect(user.twitter_username).to eq('dtsato')
     end
 
-    it 'should not change twitter username if @ is not present' do
+    it 'does not change twitter username if @ is not present' do
       user = FactoryBot.build(:user, twitter_username: 'dtsato')
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
@@ -148,8 +152,9 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
     end
+    # rubocop:enable RSpec/ExampleLength
 
-    it 'should remove state for non brazilians' do
+    it 'removes state for non brazilians' do
       user = FactoryBot.build(:user, country: 'US', state: 'Illinois')
       expect(user).to be_valid
       expect(user.state).to be_blank
@@ -169,27 +174,30 @@ RSpec.describe User, type: :model do
     it { is_expected.to normalize_attribute(:twitter_username) }
   end
 
-  context 'validations' do
+  describe 'validations' do
+    subject(:user) { FactoryBot.build(:user) }
+
     it { is_expected.to validate_presence_of :username }
     it { is_expected.to validate_presence_of :email }
     it { is_expected.to validate_presence_of :first_name }
     it { is_expected.to validate_presence_of :last_name }
 
-    context 'brazilians' do
+    describe 'brazilians' do
       subject { FactoryBot.build(:user, country: 'BR') }
+
       it { is_expected.not_to validate_presence_of :state }
     end
 
     it do
-      is_expected.to validate_length_of(:username)
+      expect(user).to validate_length_of(:username)
         .is_at_least(3).is_at_most(30)
     end
     it do
-      is_expected.to validate_length_of(:password)
+      expect(user).to validate_length_of(:password)
         .is_at_least(8).is_at_most(128)
     end
     it do
-      is_expected.to validate_length_of(:email)
+      expect(user).to validate_length_of(:email)
         .is_at_least(6).is_at_most(100)
     end
     it { is_expected.to validate_length_of(:first_name).is_at_most(100) }
@@ -216,11 +224,11 @@ RSpec.describe User, type: :model do
     it { is_expected.not_to allow_value('a@a').for(:email) }
     it { is_expected.not_to allow_value('@12.com').for(:email) }
 
-    context 'uniqueness' do
-      subject { FactoryBot.create(:user, country: 'BR') }
+    describe 'uniqueness' do
+      subject(:user) { FactoryBot.create(:user, country: 'BR') }
 
       it do
-        is_expected.to(
+        expect(user).to(
           validate_uniqueness_of(:email)
             .case_insensitive
             .with_message(I18n.t('errors.messages.taken'))
@@ -233,16 +241,16 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_confirmation_of :password }
   end
 
-  context 'associations' do
+  describe 'associations' do
     it { is_expected.to have_many(:authentications).dependent(:destroy) }
   end
 
-  it 'should provide full name' do
+  it 'provides full name' do
     user = User.new(first_name: 'Danilo', last_name: 'Sato')
     expect(user.full_name).to eq('Danilo Sato')
   end
 
-  it 'should overide to_param with username' do
+  it 'overides to_param with username' do
     user = FactoryBot.create(:user, username: 'danilo.sato 1990@2')
     expect(user.to_param.ends_with?('-danilo-sato-1990-2')).to be true
 
@@ -250,7 +258,7 @@ RSpec.describe User, type: :model do
     expect(user.to_param.ends_with?('-danilo-sato-1990-2')).to be false
   end
 
-  it 'should have "pt-BR" as default locale' do
+  it 'has "pt-BR" as default locale' do
     user = FactoryBot.build(:user)
     expect(user.default_locale).to eq('pt-BR')
   end

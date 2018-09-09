@@ -3,25 +3,27 @@
 require_relative '../rails_helper'
 
 RSpec.describe LayoutHelper, type: :helper do
-  context '#title' do
-    it 'should invoke content for title with string version of title' do
+  describe '#title' do
+    before { allow(self).to receive(:content_for).and_return(true) }
+
+    it 'invokes content for title with string version of title' do
       a_title = []
-      expect(self).to receive(:content_for)
-        .with(:title, a_title.to_s).and_return(true)
 
       title(a_title, false)
+
+      expect(self).to have_received(:content_for).with(:title, a_title.to_s)
     end
-    it 'should decide to show title or not based on second parameter' do
-      expect(self).to receive(:content_for).and_return(true)
+
+    it 'decides to show title or not based on second parameter' do
       title('title', false)
 
-      expect(helper.show_title?).to be_falsey
+      expect(helper).not_to be_show_title
     end
-    it 'should default to show title' do
-      expect(self).to receive(:content_for).and_return(true)
+
+    it 'defaults to show title' do
       title('title')
 
-      expect(helper.show_title?).to be_truthy
+      expect(helper).to be_show_title
     end
   end
 end
