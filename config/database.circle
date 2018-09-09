@@ -1,0 +1,6 @@
+test:
+  database: circle_ruby_test
+  adapter: postgresql
+  url: <%= ENV["DATABASE_URL"] %>
+  username: ubuntu
+  host: localhost
