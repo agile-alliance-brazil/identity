@@ -14,7 +14,7 @@ end
 
 gem 'attribute_normalizer'
 gem 'aws-ses', require: 'aws/ses'
-gem 'bootstrap-sass', '~> 3.3'
+gem 'bootstrap-sass', '~> 3.4'
 gem 'bundler'
 gem 'coffee-rails', '~>4.1'
 gem 'devise', '~> 4.7'
