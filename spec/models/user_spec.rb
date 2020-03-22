@@ -22,13 +22,14 @@ RSpec.describe User, type: :model do
         user.save
         user.authentications.create(auth_params.reject { |k, _v| k == :info })
 
-        omni_user = User.from_omniauth(auth_params)
+        omni_user = described_class.from_omniauth(auth_params)
         expect(omni_user).to eq(user)
       end
+
       it 'attaches new authentication from auth object' do
         user.save
 
-        omni_user = User.from_omniauth(auth_params)
+        omni_user = described_class.from_omniauth(auth_params)
 
         expect(omni_user).to eq(user)
         expect(user.authentications).to have(1).item
@@ -37,8 +38,9 @@ RSpec.describe User, type: :model do
         )
         expect(user.authentications.first.uid).to eq(auth_params[:uid])
       end
+
       it 'builds from auth object' do
-        omni_user = User.from_omniauth(auth_params)
+        omni_user = described_class.from_omniauth(auth_params)
 
         expect(omni_user.id).not_to be_nil
         expect(omni_user.first_name).to eq(user.first_name)
@@ -55,7 +57,7 @@ RSpec.describe User, type: :model do
 
     describe 'from auth info hash' do
       it 'builds from info hash' do
-        auth_user = User.from_auth_info(auth_params[:info])
+        auth_user = described_class.from_auth_info(auth_params[:info])
 
         expect(auth_user.id).to be_nil
         expect(auth_user.first_name).to eq(user.first_name)
@@ -64,8 +66,9 @@ RSpec.describe User, type: :model do
         expect(auth_user.username).to eq(user.email)
         expect(auth_user.authentications).to be_empty
       end
+
       it 'builds empty user without info' do
-        auth_user = User.from_auth_info(nil)
+        auth_user = described_class.from_auth_info(nil)
 
         expect(auth_user.id).to be_nil
         expect(auth_user.first_name).to be_nil
@@ -74,9 +77,13 @@ RSpec.describe User, type: :model do
         expect(auth_user.email).to be_nil
         expect(auth_user.authentications).to be_empty
       end
+
       it 'changes given user based on params' do
-        other_user = User.new
-        auth_user = User.from_auth_info(auth_params[:info], other_user)
+        other_user = described_class.new
+        auth_user = described_class.from_auth_info(
+          auth_params[:info],
+          other_user
+        )
 
         expect(auth_user).to equal(other_user)
         expect(auth_user.first_name).to eq(user.first_name)
@@ -84,8 +91,9 @@ RSpec.describe User, type: :model do
         expect(auth_user.email).to eq(user.email)
         expect(auth_user.username).to eq(user.email)
       end
+
       it 'maps nickname to twitter_username' do
-        auth_user = User.from_auth_info(
+        auth_user = described_class.from_auth_info(
           auth_params[:info].merge(nickname: 'hugocorbucci')
         )
 
@@ -98,7 +106,7 @@ RSpec.describe User, type: :model do
 
     describe 'with session' do
       it 'recovers data from session' do
-        auth_user = User.new_with_session(
+        auth_user = described_class.new_with_session(
           {},
           User::SESSION_DATA_KEY => auth_params
         )
@@ -108,21 +116,24 @@ RSpec.describe User, type: :model do
         expect(auth_user.email).to eq(user.email)
         expect(auth_user.username).to eq(user.email)
       end
+
       it 'uses default if nothing is in the session' do
-        auth_user = User.new_with_session({}, {})
+        auth_user = described_class.new_with_session({}, {})
 
         expect(auth_user.first_name).to be_nil
         expect(auth_user.last_name).to be_nil
         expect(auth_user.email).to be_nil
         expect(auth_user.username).to be_nil
       end
+
       it 'uses params if provided' do
-        auth_user = User.new_with_session({ first_name: 'Hugo' }, {})
+        auth_user = described_class.new_with_session({ first_name: 'Hugo' }, {})
 
         expect(auth_user.first_name).to eq('Hugo')
       end
+
       it 'provides preference to params if conflicting data in session' do
-        auth_user = User.new_with_session(
+        auth_user = described_class.new_with_session(
           { first_name: 'Hugo' },
           info: { first_name: 'Danilo' }
         )
@@ -192,14 +203,17 @@ RSpec.describe User, type: :model do
       expect(user).to validate_length_of(:username)
         .is_at_least(3).is_at_most(30)
     end
+
     it do
       expect(user).to validate_length_of(:password)
         .is_at_least(8).is_at_most(128)
     end
+
     it do
       expect(user).to validate_length_of(:email)
         .is_at_least(6).is_at_most(100)
     end
+
     it { is_expected.to validate_length_of(:first_name).is_at_most(100) }
     it { is_expected.to validate_length_of(:last_name).is_at_most(100) }
     it { is_expected.to validate_length_of(:organization).is_at_most(100) }
@@ -234,6 +248,7 @@ RSpec.describe User, type: :model do
             .with_message(I18n.t('errors.messages.taken'))
         )
       end
+
       it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
       it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
     end
@@ -246,7 +261,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'provides full name' do
-    user = User.new(first_name: 'Danilo', last_name: 'Sato')
+    user = described_class.new(first_name: 'Danilo', last_name: 'Sato')
     expect(user.full_name).to eq('Danilo Sato')
   end
 

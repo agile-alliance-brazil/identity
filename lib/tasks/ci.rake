@@ -26,5 +26,5 @@ begin
 
   task default: :'ci:all'
 rescue LoadError
-  STDERR.puts "Couldn't load rubocop, rspec or brakeman."
+  warn "Couldn't load rubocop, rspec or brakeman."
 end
