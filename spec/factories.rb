@@ -19,7 +19,7 @@ FactoryBot.define do
     bio { 'Some text about me...' }
   end
 
-  factory :simple_user, class: User do
+  factory :simple_user, class: 'User' do
     first_name { 'User' }
     last_name
     username { |a| "#{a.first_name}.#{a.last_name}".downcase }
