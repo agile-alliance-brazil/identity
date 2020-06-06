@@ -16,7 +16,6 @@ RSpec.describe User, type: :model do
       }
     end
 
-    # rubocop:disable RSpec/ExampleLength
     describe 'from omniauth' do
       it 'finds user by authentication from auth object' do
         user.save
@@ -163,7 +162,6 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
       expect(user.twitter_username).to eq('dtsato')
     end
-    # rubocop:enable RSpec/ExampleLength
 
     it 'removes state for non brazilians' do
       user = FactoryBot.build(:user, country: 'US', state: 'Illinois')

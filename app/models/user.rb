@@ -25,13 +25,11 @@ class User < ApplicationRecord
             length: { within: 3..30 },
             presence: true,
             uniqueness: { case_sensitive: false },
-            format: { with: /\A\w[\w\.+-_@ ]+\z/, message: :username_format }
+            format: { with: /\A\w[\w.+-_@ ]+\z/, message: :username_format }
   validates :email, length: { within: 6..100 }
 
   before_validation do |user|
-    if user.twitter_username&.match?(/\A@/)
-      user.twitter_username = user.twitter_username[1..-1]
-    end
+    user.twitter_username = user.twitter_username[1..-1] if user.twitter_username&.match?(/\A@/)
     user.state = nil unless in_brazil?
   end
 
