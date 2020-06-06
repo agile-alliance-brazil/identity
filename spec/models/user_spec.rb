@@ -15,6 +15,7 @@ RSpec.describe User, type: :model do
         }
       }
     end
+
     describe 'from omniauth' do
       it 'finds user by authentication from auth object' do
         user.save
