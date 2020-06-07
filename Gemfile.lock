@@ -423,7 +423,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   pg
-  poltergeist
+  poltergeist (>= 1.18.1)
   pry
   pry-rails
   rack-livereload
