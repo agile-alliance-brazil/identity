@@ -76,7 +76,7 @@ group :development, :test do
   gem 'guard-livereload', require: false
   gem 'guard-rspec'
   gem 'guard-rubocop'
-  gem 'poltergeist', require: 'capybara/poltergeist'
+  gem 'poltergeist', '>= 1.18.1', require: 'capybara/poltergeist'
   gem 'pry-rails'
   gem 'rb-fsevent', require: darwin_only('rb-fsevent')
   gem 'rb-inotify', require: linux_only('rb-inotify')
