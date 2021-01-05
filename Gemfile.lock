@@ -237,7 +237,7 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (4.0.5)
-    rack (2.2.2)
+    rack (2.2.3)
     rack-livereload (0.3.17)
       rack
     rack-test (1.1.0)
@@ -404,20 +404,20 @@ DEPENDENCIES
   codeclimate-test-reporter (~> 1.0.8)
   coffee-rails (~> 5.0, >= 5.0.0)
   devise (~> 4.7, >= 4.7.1)
-  devise-i18n (>= 1.9.0)
+  devise-i18n (>= 1.9.1)
   doorkeeper (~> 4.4, >= 4.4.3)
   doorkeeper-i18n
   dotenv-rails (>= 2.7.5)
   email_spec
-  factory_bot_rails (>= 5.1.1)
+  factory_bot_rails (>= 5.2.0)
   foreman
   guard-livereload
   guard-rspec
   guard-rubocop
   haml (~> 5.0)
-  jquery-rails (~> 4.3, >= 4.3.5)
+  jquery-rails (~> 4.4, >= 4.4.0)
   jquery-ui-rails (~> 6.0, >= 6.0.1)
-  lol_dba (>= 2.1.9)
+  lol_dba (>= 2.2.0)
   newrelic_rpm
   omniauth
   omniauth-facebook
@@ -433,7 +433,7 @@ DEPENDENCIES
   rb-inotify
   rspec-collection_matchers
   rspec-its
-  rspec-rails (>= 3.9.1)
+  rspec-rails (>= 4.0.1)
   rubocop
   rubocop-rspec
   sass-rails (~> 5.1, >= 5.1.0)
