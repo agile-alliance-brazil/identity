@@ -75,7 +75,7 @@ group :development, :test do
   gem 'dotenv-rails', '>= 2.7.5'
   gem 'guard-livereload', require: false
   gem 'guard-rspec'
-  gem 'guard-rubocop'
+  gem 'guard-rubocop', '>= 1.3.0'
   gem 'poltergeist', '>= 1.18.1', require: 'capybara/poltergeist'
   gem 'pry-rails'
   gem 'rb-fsevent', require: darwin_only('rb-fsevent')
@@ -83,8 +83,8 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-rails', '>= 4.0.1'
-  gem 'rubocop'
-  gem 'rubocop-rspec'
+  gem 'rubocop', '>= 0.85.0'
+  gem 'rubocop-rspec', '>= 1.39.0'
   gem 'selenium-webdriver'
   gem 'spring'
   gem 'spring-commands-rspec'
