@@ -64,7 +64,7 @@ end
 
 group :test do
   gem 'codeclimate-test-reporter', '~> 1.0.8'
-  gem 'email_spec'
+  gem 'email_spec', '>= 2.2.0'
   gem 'factory_bot_rails', '>= 5.2.0'
   gem 'shoulda-matchers', '>= 4.3.0', require: false
   gem 'simplecov', '>= 0.13.0'
