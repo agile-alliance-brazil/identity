@@ -25,7 +25,7 @@ gem 'haml', '~> 5.0'
 gem 'jquery-rails', '~> 4.4', '>= 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'newrelic_rpm'
-gem 'omniauth'
+gem 'omniauth', '>= 2.0.0'
 # general
 # gem 'omniauth-azure-oauth2'
 # gem 'omniauth-digitalocean'
