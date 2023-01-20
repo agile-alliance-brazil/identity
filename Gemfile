@@ -36,7 +36,7 @@ gem 'omniauth-facebook'
 # gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter'
 # gem 'omniauth2-gitlab'
-gem 'rails', '~> 5.2', '>= 5.2.4.3'
+gem 'rails', '~> 6.1', '>= 6.1.7.1'
 gem 'sass-rails', '~> 5.1', '>= 5.1.0'
 gem 'therubyracer'
 gem 'turbolinks'
@@ -72,7 +72,7 @@ end
 
 group :development, :test do
   gem 'brakeman', require: false
-  gem 'dotenv-rails', '>= 2.7.5'
+  gem 'dotenv-rails', '>= 2.7.6'
   gem 'guard-livereload', require: false
   gem 'guard-rspec'
   gem 'guard-rubocop'
