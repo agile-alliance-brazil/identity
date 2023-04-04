@@ -25,7 +25,7 @@ gem 'haml', '~> 5.0'
 gem 'jquery-rails', '~> 4.4', '>= 4.4.0'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 gem 'newrelic_rpm'
-gem 'omniauth'
+gem 'omniauth', '>= 2.1.0'
 # general
 # gem 'omniauth-azure-oauth2'
 # gem 'omniauth-digitalocean'
@@ -36,8 +36,8 @@ gem 'omniauth-facebook'
 # gem 'omniauth-linkedin-oauth2'
 gem 'omniauth-twitter'
 # gem 'omniauth2-gitlab'
-gem 'rails', '~> 5.2', '>= 5.2.4.3'
-gem 'sass-rails', '~> 5.1', '>= 5.1.0'
+gem 'rails', '~> 6.1', '>= 6.1.7.3'
+gem 'sass-rails', '~> 6.0', '>= 6.0.0'
 gem 'therubyracer'
 gem 'turbolinks'
 gem 'uglifier', '~>4.0'
@@ -72,7 +72,7 @@ end
 
 group :development, :test do
   gem 'brakeman', require: false
-  gem 'dotenv-rails', '>= 2.7.5'
+  gem 'dotenv-rails', '>= 2.7.6'
   gem 'guard-livereload', require: false
   gem 'guard-rspec'
   gem 'guard-rubocop'
