@@ -83,7 +83,7 @@ group :development, :test do
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
   gem 'rspec-rails', '>= 4.0.1'
-  gem 'rubocop'
+  gem 'rubocop', '>= 1.66.0'
   gem 'rubocop-rspec'
   gem 'selenium-webdriver'
   gem 'spring'
