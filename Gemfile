@@ -82,7 +82,7 @@ group :development, :test do
   gem 'rb-inotify', require: linux_only('rb-inotify')
   gem 'rspec-collection_matchers'
   gem 'rspec-its'
-  gem 'rspec-rails', '>= 4.0.1'
+  gem 'rspec-rails', '>= 8.0.0'
   gem 'rubocop'
   gem 'rubocop-rspec'
   gem 'selenium-webdriver'
