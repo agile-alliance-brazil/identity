@@ -29,7 +29,7 @@ gem 'omniauth'
 # general
 # gem 'omniauth-azure-oauth2'
 # gem 'omniauth-digitalocean'
-gem 'omniauth-facebook'
+gem 'omniauth-facebook', '>= 7.0.0'
 # gem 'omniauth-github'
 # gem 'omniauth-google-oauth2'
 # gem 'omniauth-heroku'
